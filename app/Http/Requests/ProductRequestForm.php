@@ -25,7 +25,7 @@ class ProductRequestForm extends FormRequest
     {
         if (request()->has('image')) {
             return [
-                'productName' => 'required',
+                'productName' => 'required|min:2|max:8',
                 'productPrice' => 'required',
                 'image' => 'image',
             ];
@@ -33,6 +33,15 @@ class ProductRequestForm extends FormRequest
         return [
             'productName' => 'required',
             'productPrice' => 'required',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'productName.required'=> ' Ten khong duoc de trong',
+            'productName.min'=> ' Ten phai nhieu hon 2 ki tu',
+
         ];
     }
 }

@@ -16,8 +16,9 @@
             </thead>
             <tbody>
             @foreach($bills as $key => $bill)
+{{--                @dd($bill->user->id);--}}
                 <tr>
-                    <td>{{ 'CI-'.$bill->user->id }}</td>
+                    <td>{{ 'CI-'.$bill->user_id }}</td>
                     <td>{{ $bill->user->name }}</td>
                     <td>{{ $bill->payDate }}</td>
                     <td>{{ $bill->products()->count() }}</td>

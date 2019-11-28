@@ -43,11 +43,9 @@ class ShopBillController extends Controller
     public function storeBill(Request $request)
     {
         $this->billService->create($request);
-
-        $bill = $this->mailService->getBill();
-        $billProducts = $this->mailService->getBillsProducts(Session::get('billId'));
-        $this->mailService->sendMailToAdmin($bill, $billProducts);
-
+//        $bill = $this->mailService->getBill();
+//        $billProducts = $this->mailService->getBillsProducts(Session::get('billId'));
+//        $this->mailService->sendMailToAdmin($bill, $billProducts);
         return redirect()->route('mail.form');
     }
 

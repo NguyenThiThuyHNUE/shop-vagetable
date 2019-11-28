@@ -54,7 +54,6 @@ class HomeController extends Controller
             $user =$this->userService->findById($id);
             Auth::login($user,true);
         }
-        dd(Auth::user());
         $products = $this->productService->getAll();
         return view('home.home', compact('products'));
     }

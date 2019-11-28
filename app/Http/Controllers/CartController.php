@@ -38,6 +38,7 @@ class CartController extends Controller
 
     public function changeCart(Request $request, $productId)
     {
+//        dd($request);
         $product = $this->productService->findById($productId);
 
         $this->cartService->updateOrDeleteCart($product, $request);

@@ -4,7 +4,8 @@
         <div class="form-group">
             <p> We will send bill for you. Please enter your mail
             </p><br>
-            <form method="post" action="{{ route('mail.send') }}">
+            <form >
+{{--                method="post" action="{{ route('mail.send') }}"--}}
                 @csrf
                 <label for="To">To:
                     <input type="text" name="user">

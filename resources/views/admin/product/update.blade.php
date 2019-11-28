@@ -19,6 +19,9 @@
                                 <div class="col-md-6">
                                     <input type="text" name="productName" class="form-control">
                                 </div>
+                                @if($errors-> has('productName'))
+                                    <span class="text-danger">{{$errors->first('productName')}}</span>
+                                @endif
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-md-4 col-form-label text-md-right">
@@ -27,6 +30,9 @@
                                 <div class="col-md-6">
                                     <input type="text" name="productPrice" class="form-control">
                                 </div>
+                                @if($errors-> has('productPrice'))
+                                    <span class="text-danger">{{$errors->first('productPrice')}}</span>
+                                @endif
                             </div>
 
                             <div class="form-group">
