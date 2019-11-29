@@ -232,43 +232,14 @@
                     </div>
                     <div class="col-md-8 hidden-xs hidden-sm">
                         <div class="main-menu">
-                            <nav><!-- chuyên làm menu -->
+                            <nav> <!-- chuyên làm menu -->
                                 <ul>
-                                    <li><a href="index.html">home</a>
+                                    <li><a href="{{ url('/') }}">home</a>
                                         <ul>
-                                            <li><a href="index.html">home page</a></li>
+                                            <li><a href="{{ url('/') }}">home page</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="about.html">about</a></li>
-                                    <li><a href="blog.html">blog</a></li>
-                                    <li><a href="#">pages</a>
-                                        <ul>
-                                            <li><a href="about.html">about</a></li>
-                                            <li><a href="blog.html">blog</a></li>
-                                            <li><a href="checkout.html">checkout</a></li>
-                                            <li><a href="contact.html">contact</a></li>
-                                            <li><a href="login.html">login</a></li>
-                                            <li><a href="404.html">404 error</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="contact.html">contact</a></li>
-                                    <li><a href="login.html">login</a></li>
-                                    <li class="nav-item">
-                                        <select name="lang" id="" class="form-control" onchange="handleValueSelect(this)">
-                                            @if(Session::has('lang'))
-                                                @if(Session::get('lang') == 'en')
-                                                    <option value="{{ url('lang/en') }}">en</option>
-                                                    <option value="{{ url('lang/vi') }}">vi</option>
-                                                @else
-                                                    <option value="{{ url('lang/vi') }}">vi</option>
-                                                    <option value="{{ url('lang/en') }}">en</option>
-                                                @endif
-                                            @else
-                                                <option value="{{ config('app.locale') }}">{{ config('app.locale') }}</option>
-                                                <option value="{{ url('lang/vi') }}">vi</option>
-                                            @endif
-                                        </select>
-                                    </li>
+                                    <li><a href="{{ route('shopBill.getBill') }}">Mybill</a></li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{ route('carts.index') }}">
                                 <span>{{__('layout_home.cart')}} &nbsp;<span>@if(Session::has('cart'))
@@ -305,7 +276,24 @@
                                                 </form>
                                             </div>
                                         </li>
+
                                     @endif
+                                    <li class="nav-item">
+                                        <select name="lang" id="" class="form-control" onchange="handleValueSelect(this)">
+                                            @if(Session::has('lang'))
+                                                @if(Session::get('lang') == 'en')
+                                                    <option value="{{ url('lang/en') }}">en</option>
+                                                    <option value="{{ url('lang/vi') }}">vi</option>
+                                                @else
+                                                    <option value="{{ url('lang/vi') }}">vi</option>
+                                                    <option value="{{ url('lang/en') }}">en</option>
+                                                @endif
+                                            @else
+                                                <option value="{{ config('app.locale') }}">{{ config('app.locale') }}</option>
+                                                <option value="{{ url('lang/vi') }}">vi</option>
+                                            @endif
+                                        </select>
+                                    </li>
                                 </ul>
                             </nav>
                         </div>
@@ -424,10 +412,11 @@
                         <div class="coupon-info">
                             <form action="#">
                                 <p class="checkout-coupon">
-                                    <input type="text" placeholder="Coupon code" />
-                                    <input type="submit" value="Apply Coupon" />
+                                    <input type="text" placeholder="Coupon code" name="promo" id="promo"/>
+                                    <input type="submit" value="Apply Coupon"  onclick="checkPromo()" />
                                 </p>
                             </form>
+                            <div class=""><span id="promoMessage"></span>
                         </div>
                     </div>
                     <!-- ACCORDION END -->
@@ -441,17 +430,19 @@
 <div class="checkout-area">
     <div class="container">
         <div class="row">
-            <form action="#">
+            <form method="post" action="{{ route('shopBill.storeBill') }}">
+                @csrf
                 <div class="col-lg-6 col-md-6">
                     <div class="checkbox-form">
                         <h3>Billing Details</h3>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="country-select">
-                                    <label>Country <span class="required">*</span></label>
-                                    <select>
-                                        <option value="volvo">bangladesh</option>
-                                        <option value="saab">Algeria</option>
+                                    <label>City <span class="required">*</span></label>
+                                    <select name="billCity" id="city">
+                                        <option value="">Choose</option>
+                                        <option value="california">California</option>
+                                        <option value="hanoi">Ha Noi</option>
                                         <option value="mercedes">Afghanistan</option>
                                         <option value="audi">Ghana</option>
                                         <option value="audi2">Albania</option>
@@ -460,89 +451,85 @@
                                         <option value="audi5">Dominican Republic</option>
                                     </select>
                                 </div>
+                                <div class="country-select">
+                                    <label>Distric <span class="required">*</span></label>
+                                    <select name="billDistric" id="distric">
+                                        <option value="">United States</option>
+                                        <option value="california">California</option>
+                                        <option value="hanoi">Hoang Mai</option>
+                                        <option value="mercedes">Dong Da</option>
+                                        <option value="audi">Ghana</option>
+                                        <option value="audi2">Albania</option>
+                                        <option value="audi3">Bahrain</option>
+                                        <option value="audi4">Colombia</option>
+                                        <option value="audi5">Dominican Republic</option>
+                                    </select>
+                                </div>
+                            </div>
+{{--                            <div class="col-md-6">--}}
+{{--                                <div class="checkout-form-list">--}}
+{{--                                    <label>First Name <span class="required">*</span></label>--}}
+{{--                                    <input type="text" placeholder="" />--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="col-md-6">--}}
+{{--                                <div class="checkout-form-list">--}}
+{{--                                    <label>Last Name <span class="required">*</span></label>--}}
+{{--                                    <input type="text" placeholder="" />--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="col-md-12">--}}
+{{--                                <div class="checkout-form-list">--}}
+{{--                                    <label>Company Name</label>--}}
+{{--                                    <input type="text" placeholder="" />--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+                            <div class="col-md-12">
+                                <div class="checkout-form-list">
+                                    <label for="address">Address <span class="required">*</span></label>
+                                    <input type="text" placeholder="Street address" name="billAddress" id="address"/>
+                                </div>
+                            </div>
+                            <h4>Payment</h4>
+                            <div class="checkout-form-list create-acc">
+                                <input id="credit" type="radio" value="0" name="paymentMethod" checked="" onclick="location.reload()" />
+                                <label for="credit" >Credit Card</label>
+                            </div>
+                            <div class="checkout-form-list create-acc">
+                                <input id="debit" type="radio" value="1" name="paymentMethod"  onclick="location.reload()" />
+                                <label for="debit" >Debit Card</label>
+                            </div>
+                            <div class="checkout-form-list create-acc">
+                                <input id="paypal" type="radio" value="2" name="paymentMethod"  onclick="hideForm()" required=""/>
+                                <label for="paypal" >Post Pay</label>
+                            </div>
+                            <span id="hideForm">
+                            <div class="col-md-6">
+                                <div class="checkout-form-list">
+                                    <label>Name on Card <span class="required">*</span></label>
+                                    <input type="text" placeholder="" id="cc-name" />
+                                </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="checkout-form-list">
-                                    <label>First Name <span class="required">*</span></label>
+                                    <label>Number on Card <span class="required">*</span></label>
                                     <input type="text" placeholder="" />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="checkout-form-list">
-                                    <label>Last Name <span class="required">*</span></label>
-                                    <input type="text" placeholder="" />
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="checkout-form-list">
-                                    <label>Company Name</label>
-                                    <input type="text" placeholder="" />
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="checkout-form-list">
-                                    <label>Address <span class="required">*</span></label>
-                                    <input type="text" placeholder="Street address" />
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="checkout-form-list">
-                                    <input type="text" placeholder="Apartment, suite, unit etc. (optional)" />
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="checkout-form-list">
-                                    <label>Town / City <span class="required">*</span></label>
-                                    <input type="text" placeholder="Town / City" />
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="checkout-form-list">
-                                    <label>State / County <span class="required">*</span></label>
-                                    <input type="text" placeholder="" />
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="checkout-form-list">
-                                    <label>Postcode / Zip <span class="required">*</span></label>
-                                    <input type="text" placeholder="Postcode / Zip" />
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="checkout-form-list">
-                                    <label>Email Address <span class="required">*</span></label>
+                                    <label>Expiration <span class="required">*</span></label>
                                     <input type="email" placeholder="" />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="checkout-form-list">
-                                    <label>Phone  <span class="required">*</span></label>
-                                    <input type="text" placeholder="Postcode / Zip" />
+                                    <label>CVV  <span class="required">*</span></label>
+                                    <input type="text" placeholder="" />
                                 </div>
                             </div>
-                            <div class="col-md-12">
-                                <div class="checkout-form-list create-acc">
-                                    <input id="cbox" type="checkbox" />
-                                    <label>Create an account?</label>
-                                </div>
-                                <div id="cbox_info" class="checkout-form-list create-account">
-                                    <p>Create an account by entering the information below. If you are a returning customer please login at the top of the page.</p>
-                                    <label>Account password  <span class="required">*</span></label>
-                                    <input type="password" placeholder="password" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="different-address">
-                            <div class="ship-different-title">
-                                <h3>
-                                    <label>Ship to a different address?</label>
-                                </h3>
-                            </div>
-                            <div class="order-notes">
-                                <div class="checkout-form-list">
-                                    <textarea id="checkout-mess" cols="30" rows="10" placeholder="Notes about your order, e.g. special notes for delivery." required="required"></textarea>
-                                </div>
-                            </div>
+                            </span>
+
                         </div>
                     </div>
                 </div>
@@ -552,24 +539,6 @@
 
                         <div class="your-order-table table-responsive">
                             <table>
-{{--                                @foreach($products as $product)--}}
-{{--                                <tr class="cart-subtotal">--}}
-{{--                                    <th>Product Name</th>--}}
-{{--                                    <td><span class="amount">{{ $product['product']->productName }}</span></td>--}}
-{{--                                </tr>--}}
-{{--                                <tr class="cart-subtotal">--}}
-{{--                                    <th>Product Qty</th>--}}
-{{--                                    <td><span class="amount">{{$product['qty']}}</span></td>--}}
-{{--                                </tr>--}}
-{{--                                <tr class="order-total">--}}
-{{--                                    <th>Order Total</th>--}}
-{{--                                    <td><strong><span class="amount">{{ number_format($product['product']->productPrice) }}</span></strong>--}}
-{{--                                    </td>--}}
-{{--                                </tr>--}}
-{{--                                @endforeach--}}
-
-{{--                            </table>--}}
-{{--                            <table>--}}
 
                                 <thead>
                                 <tr>
@@ -610,47 +579,47 @@
                 <div class="brand-curosel">
                     <div class="col-md-12">
                         <div class="single-brand">
-                            <a href="#"><img src="img/brand/1.png" alt="" /></a>
+                            <a href="#"><img src="http://www.vietgap.com/Uploads/image/thanh-hai/image/21_05_16%20rau%20sach.jpg" alt="" /></a>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="single-brand">
-                            <a href="#"><img src="img/brand/1.png" alt="" /></a>
+                            <a href="#"><img src="http://www.vietgap.com/Uploads/image/thanh-hai/image/21_05_16%20rau%20sach.jpg" alt="" /></a>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="single-brand">
-                            <a href="#"><img src="img/brand/1.png" alt="" /></a>
+                            <a href="#"><img src="  http://www.vietgap.com/Uploads/image/thanh-hai/image/21_05_16%20rau%20sach.jpg" alt="" /></a>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="single-brand">
-                            <a href="#"><img src="img/brand/1.png" alt="" /></a>
+                            <a href="#"><img src="http://www.vietgap.com/Uploads/image/thanh-hai/image/21_05_16%20rau%20sach.jpg" alt="" /></a>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="single-brand">
-                            <a href="#"><img src="img/brand/1.png" alt="" /></a>
+                            <a href="#"><img src="http://www.vietgap.com/Uploads/image/thanh-hai/image/21_05_16%20rau%20sach.jpg" alt="" /></a>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="single-brand">
-                            <a href="#"><img src="img/brand/1.png" alt="" /></a>
+                            <a href="#"><img src="http://www.vietgap.com/Uploads/image/thanh-hai/image/21_05_16%20rau%20sach.jpg" alt="" /></a>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="single-brand">
-                            <a href="#"><img src="img/brand/1.png" alt="" /></a>
+                            <a href="#"><img src="http://www.vietgap.com/Uploads/image/thanh-hai/image/21_05_16%20rau%20sach.jpg" alt="" /></a>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="single-brand">
-                            <a href="#"><img src="img/brand/1.png" alt="" /></a>
+                            <a href="#"><img src="http://www.vietgap.com/Uploads/image/thanh-hai/image/21_05_16%20rau%20sach.jpg" alt="" /></a>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="single-brand">
-                            <a href="#"><img src="img/brand/1.png" alt="" /></a>
+                            <a href="#"><img src="http://www.vietgap.com/Uploads/image/thanh-hai/image/21_05_16%20rau%20sach.jpg" alt="" /></a>
                         </div>
                     </div>
                 </div>
@@ -824,6 +793,24 @@
 <script src="{{\Illuminate\Support\Facades\URL::asset('js/plugins.js')}}"></script>
 <!-- main js -->
 <script src="{{\Illuminate\Support\Facades\URL::asset('js/main.js')}}"></script>
+    <script>
+        function hideForm() {
+            document.getElementById('hideForm').innerHTML = '';
+            return loacation.reload();
+        }
+
+        function checkPromo() {
+            let promoArray = ['Hello', 'Hi',];
+            let promo = document.getElementById('promo').value;
+            for (let i = 0; i < promoArray.length; i++) {
+                if (promo === promoArray[i]) {
+                    return document.getElementById('promoMessage').innerHTML = 'Valid Code'
+                }
+            }
+            return document.getElementById('promoMessage').innerHTML = 'Invalid Code';
+        }
+    </script>
+</div>
 </body>
 </html>
 

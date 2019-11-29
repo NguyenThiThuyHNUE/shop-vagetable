@@ -121,41 +121,12 @@
                         <div class="main-menu">
                             <nav> <!-- chuyên làm menu -->
                                 <ul>
-                                    <li><a href="index.html">home</a>
+                                    <li><a href="{{ url('/') }}">home</a>
                                         <ul>
-                                            <li><a href="index.html">home page</a></li>
+                                            <li><a href="{{ url('/') }}">home page</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="about.html">about</a></li>
-                                    <li><a href="blog.html">blog</a></li>
-                                    <li><a href="#">pages</a>
-                                        <ul>
-                                            <li><a href="about.html">about</a></li>
-                                            <li><a href="blog.html">blog</a></li>
-                                            <li><a href="checkout.html">checkout</a></li>
-                                            <li><a href="contact.html">contact</a></li>
-                                            <li><a href="login.html">login</a></li>
-                                            <li><a href="404.html">404 error</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="contact.html">contact</a></li>
-                                    <li><a href="login.html">login</a></li>
-                                    <li class="nav-item">
-                                        <select name="lang" id="" class="form-control" onchange="handleValueSelect(this)">
-                                            @if(Session::has('lang'))
-                                                @if(Session::get('lang') == 'en')
-                                                    <option value="{{ url('lang/en') }}">en</option>
-                                                    <option value="{{ url('lang/vi') }}">vi</option>
-                                                @else
-                                                    <option value="{{ url('lang/vi') }}">vi</option>
-                                                    <option value="{{ url('lang/en') }}">en</option>
-                                                @endif
-                                            @else
-                                                <option value="{{ config('app.locale') }}">{{ config('app.locale') }}</option>
-                                                <option value="{{ url('lang/vi') }}">vi</option>
-                                            @endif
-                                        </select>
-                                    </li>
+                                    <li><a href="{{ route('shopBill.getBill') }}">Mybill</a></li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{ route('carts.index') }}">
                                 <span>{{__('layout_home.cart')}} &nbsp;<span>@if(Session::has('cart'))
@@ -192,7 +163,24 @@
                                                 </form>
                                             </div>
                                         </li>
+
                                     @endif
+                                    <li class="nav-item">
+                                        <select name="lang" id="" class="form-control" onchange="handleValueSelect(this)">
+                                            @if(Session::has('lang'))
+                                                @if(Session::get('lang') == 'en')
+                                                    <option value="{{ url('lang/en') }}">en</option>
+                                                    <option value="{{ url('lang/vi') }}">vi</option>
+                                                @else
+                                                    <option value="{{ url('lang/vi') }}">vi</option>
+                                                    <option value="{{ url('lang/en') }}">en</option>
+                                                @endif
+                                            @else
+                                                <option value="{{ config('app.locale') }}">{{ config('app.locale') }}</option>
+                                                <option value="{{ url('lang/vi') }}">vi</option>
+                                            @endif
+                                        </select>
+                                    </li>
                                 </ul>
                             </nav>
                         </div>
@@ -201,9 +189,11 @@
                         <div class="header-search">
                             <i class="fa fa-search"></i>
                             <div class="header-form">
-                                <form action="#">
-                                    <input type="text" placeholder="search" />
-                                    <button><i class="fa fa-search"></i></button>
+
+                                <form method="post" action="{{ route('home.search') }}">
+                                    @csrf
+                                    <input name="keySearch" type="search" placeholder="search" />
+                                    <button  type="submit" ><i class="fa fa-search"></i></button>
                                 </form>
                             </div>
                         </div>
@@ -272,7 +262,7 @@
                     <h1>Top soft drinks</h1>
                 </div>
                 <div class="cap-readmore wow bounceInUp" data-wow-duration="1.3s" data-wow-delay=".5s">
-                    <a href="#">shop now</a>
+                    <a href="{{ url('/') }}">shop now</a>
                 </div>
             </div>
         </div>
@@ -289,7 +279,7 @@
                     <h1>Top fashion for women</h1>
                 </div>
                 <div class="cap-readmore wow bounceIn" data-wow-duration="1.1s" data-wow-delay=".5s">
-                    <a href="#">shop now</a>
+                    <a href="{{ url('/') }}">shop now</a>
                 </div>
             </div>
         </div>
@@ -385,7 +375,7 @@
                                         <div class="single-product">
                                             <div class="product-img">
                                                 <a href="{{ route('home.detail',$product->id) }}">
-                                                    <img  src="http://cachtrongrausach.vn/upload/administrator/image/dung-cu-lam-vuon/ke-sat-v-lo/gian-trong-rau-sach.jpg"" alt="" />
+                                                    <img  src="{{ asset("storage/$product->image") }}" alt="" />
                                                     <img class="secondary-img" src="img/product/xoai.png" alt="" />
                                                 </a>
                                                 <span class="tag-line">new</span>
@@ -425,7 +415,7 @@
                                             <div class="single-product">
                                                 <div class="product-img">
                                                     <a href="{{ route('home.detail',$product->id) }}">
-                                                        <img  src="http://cachtrongrausach.vn/upload/administrator/image/dung-cu-lam-vuon/ke-sat-v-lo/gian-trong-rau-sach.jpg"" alt="" />
+                                                        <img  src="{{ asset("storage/$product->image") }}" alt="" />
                                                         <img class="secondary-img" src="img/product/xoai.png" alt="" />
                                                     </a>
                                                     <span class="tag-line">new</span>
@@ -466,7 +456,7 @@
                                             <div class="single-product">
                                                 <div class="product-img">
                                                     <a href="{{ route('home.detail',$product->id) }}">
-                                                        <img  src="http://cachtrongrausach.vn/upload/administrator/image/dung-cu-lam-vuon/ke-sat-v-lo/gian-trong-rau-sach.jpg"" alt="" />
+                                                        <img  src="{{ asset("storage/$product->image") }}" alt="" />
                                                         <img class="secondary-img" src="img/product/xoai.png" alt="" />
                                                     </a>
                                                     <span class="tag-line">new</span>
@@ -503,591 +493,6 @@
         </div>
     </div>
 </div>
-<!-- featured-area end -->
-{{--<!-- upcoming-product-area start -->--}}
-{{--<div class="upcoming-product-area pad-60">--}}
-{{--    <div class="container">--}}
-{{--        <div class="row">--}}
-{{--            <div class="upcoming-curosel">--}}
-{{--                <!-- upcoming-single start -->--}}
-{{--                <div class="upcoming-single">--}}
-{{--                    <div class="col-md-4 col-sm-4">--}}
-{{--                        <div class="upcoming-img">--}}
-{{--                            <a href="single-product.html"><img src="img/product/9.jpg" alt="" /></a>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="col-md-8 col-sm-8">--}}
-{{--                        <div class="upcoming-content">--}}
-{{--                            <h2><a href="#">Lorem ipsum dolor</a></h2>--}}
-{{--                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.Nam liber tempor cum.</p>--}}
-{{--                            <div class="timer">--}}
-{{--                                <div data-countdown="2019/04/01"></div>--}}
-{{--                            </div>--}}
-{{--                            <div class="price">--}}
-{{--                                <span>$80.00</span>--}}
-{{--                                <span class="old">$90.11</span>--}}
-{{--                            </div>--}}
-{{--                            <div class="product-action">--}}
-{{--                                <div class="button-top">--}}
-{{--                                    <a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>--}}
-{{--                                    <a href="#" ><i class="fa fa-heart"></i></a>--}}
-{{--                                </div>--}}
-{{--                                <div class="button-cart">--}}
-{{--                                    <button><i class="fa fa-shopping-cart"></i> add to cart</button>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <!-- upcoming-single end -->--}}
-{{--                <!-- upcoming-single start -->--}}
-{{--                <div class="upcoming-single">--}}
-{{--                    <div class="col-md-4 col-sm-4">--}}
-{{--                        <div class="upcoming-img">--}}
-{{--                            <a href="single-product.html"><img src="img/product/w1.jpg" alt="" /></a>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="col-md-8 col-sm-8">--}}
-{{--                        <div class="upcoming-content">--}}
-{{--                            <h2><a href="#">Lorem ipsum dolor</a></h2>--}}
-{{--                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.Nam liber tempor cum.</p>--}}
-{{--                            <div class="timer">--}}
-{{--                                <div data-countdown="2019/02/01"></div>--}}
-{{--                            </div>--}}
-{{--                            <div class="price">--}}
-{{--                                <span>$80.00</span>--}}
-{{--                                <span class="old">$90.11</span>--}}
-{{--                            </div>--}}
-{{--                            <div class="product-action">--}}
-{{--                                <div class="button-top">--}}
-{{--                                    <a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>--}}
-{{--                                    <a href="#" ><i class="fa fa-heart"></i></a>--}}
-{{--                                </div>--}}
-{{--                                <div class="button-cart">--}}
-{{--                                    <button><i class="fa fa-shopping-cart"></i> add to cart</button>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <!-- upcoming-single end -->--}}
-{{--                <!-- upcoming-single start -->--}}
-{{--                <div class="upcoming-single">--}}
-{{--                    <div class="col-md-4 col-sm-4">--}}
-{{--                        <div class="upcoming-img">--}}
-{{--                            <a href="single-product.html"><img src="img/product/5.jpg" alt="" /></a>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="col-md-8 col-sm-8">--}}
-{{--                        <div class="upcoming-content">--}}
-{{--                            <h2><a href="#">Lorem ipsum dolor</a></h2>--}}
-{{--                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.Nam liber tempor cum.</p>--}}
-{{--                            <div class="timer">--}}
-{{--                                <div data-countdown="2019/04/01"></div>--}}
-{{--                            </div>--}}
-{{--                            <div class="price">--}}
-{{--                                <span>$80.00</span>--}}
-{{--                                <span class="old">$90.11</span>--}}
-{{--                            </div>--}}
-{{--                            <div class="product-action">--}}
-{{--                                <div class="button-top">--}}
-{{--                                    <a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>--}}
-{{--                                    <a href="#" ><i class="fa fa-heart"></i></a>--}}
-{{--                                </div>--}}
-{{--                                <div class="button-cart">--}}
-{{--                                    <button><i class="fa fa-shopping-cart"></i> add to cart</button>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <!-- upcoming-single end -->--}}
-{{--                <!-- upcoming-single start -->--}}
-{{--                <div class="upcoming-single">--}}
-{{--                    <div class="col-md-4 col-sm-4">--}}
-{{--                        <div class="upcoming-img">--}}
-{{--                            <a href="single-product.html"><img src="img/product/w9.jpg" alt="" /></a>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="col-md-8 col-sm-8">--}}
-{{--                        <div class="upcoming-content">--}}
-{{--                            <h2><a href="#">Lorem ipsum dolor</a></h2>--}}
-{{--                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.Nam liber tempor cum.</p>--}}
-{{--                            <div class="timer">--}}
-{{--                                <div data-countdown="2019/04/01"></div>--}}
-{{--                            </div>--}}
-{{--                            <div class="price">--}}
-{{--                                <span>$80.00</span>--}}
-{{--                                <span class="old">$90.11</span>--}}
-{{--                            </div>--}}
-{{--                            <div class="product-action">--}}
-{{--                                <div class="button-top">--}}
-{{--                                    <a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>--}}
-{{--                                    <a href="#" ><i class="fa fa-heart"></i></a>--}}
-{{--                                </div>--}}
-{{--                                <div class="button-cart">--}}
-{{--                                    <button><i class="fa fa-shopping-cart"></i> add to cart</button>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <!-- upcoming-single end -->--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-{{--</div>--}}
-{{--<!-- upcoming-product-a rea end -->--}}
-<!-- category-area start -->
-{{--<div class="category-area pad-60">--}}
-{{--    <div class="container">--}}
-{{--        <div class="row">--}}
-{{--            <div class="section-title">--}}
-{{--                <h2>Exclusive collection</h2>--}}
-{{--                <div class="title-icon">--}}
-{{--                    <span><i class="fa fa-angle-left"></i> <i class="fa fa-angle-right"></i></span>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--        <div class="row">--}}
-{{--            <div class="product-curosel">--}}
-{{--                <!-- single-product start -->--}}
-{{--                <div class="col-md-12">--}}
-{{--                    <div class="single-product">--}}
-{{--                        <div class="product-img">--}}
-{{--                            <a href="single-product.html">--}}
-{{--                                <img src="img/product/2.jpg" alt="" />--}}
-{{--                                <img class="secondary-img" src="img/product/1.jpg" alt="" />--}}
-{{--                            </a>--}}
-{{--                            <span class="tag-line">new</span>--}}
-{{--                            <div class="product-action">--}}
-{{--                                <div class="button-top">--}}
-{{--                                    <a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>--}}
-{{--                                    <a href="#" ><i class="fa fa-heart"></i></a>--}}
-{{--                                </div>--}}
-{{--                                <div class="button-cart">--}}
-{{--                                    <button><i class="fa fa-shopping-cart"></i> add to cart</button>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="product-content">--}}
-{{--                            <h3><a href="single-product.html">Lorem ipsum dolor</a></h3>--}}
-{{--                            <div class="price">--}}
-{{--                                <span>$70.00</span>--}}
-{{--                                <span class="old">$80.11</span>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="single-product">--}}
-{{--                        <div class="product-img">--}}
-{{--                            <a href="single-product.html">--}}
-{{--                                <img src="img/product/5.jpg" alt="" />--}}
-{{--                                <img class="secondary-img" src="img/product/7.jpg" alt="" />--}}
-{{--                            </a>--}}
-{{--                            <span class="tag-line">new</span>--}}
-{{--                            <div class="product-action">--}}
-{{--                                <div class="button-top">--}}
-{{--                                    <a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>--}}
-{{--                                    <a href="#" ><i class="fa fa-heart"></i></a>--}}
-{{--                                </div>--}}
-{{--                                <div class="button-cart">--}}
-{{--                                    <button><i class="fa fa-shopping-cart"></i> add to cart</button>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="product-content">--}}
-{{--                            <h3><a href="single-product.html">Lorem ipsum dolor</a></h3>--}}
-{{--                            <div class="price">--}}
-{{--                                <span>$70.00</span>--}}
-{{--                                <span class="old">$80.11</span>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <!-- single-product end -->--}}
-{{--                <!-- single-product start -->--}}
-{{--                <div class="col-md-12">--}}
-{{--                    <div class="single-product">--}}
-{{--                        <div class="product-img">--}}
-{{--                            <a href="single-product.html">--}}
-{{--                                <img src="img/product/16.jpg" alt="" />--}}
-{{--                                <img class="secondary-img" src="img/product/14.jpg" alt="" />--}}
-{{--                            </a>--}}
-{{--                            <span class="tag-line">new</span>--}}
-{{--                            <div class="product-action">--}}
-{{--                                <div class="button-top">--}}
-{{--                                    <a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>--}}
-{{--                                    <a href="#" ><i class="fa fa-heart"></i></a>--}}
-{{--                                </div>--}}
-{{--                                <div class="button-cart">--}}
-{{--                                    <button><i class="fa fa-shopping-cart"></i> add to cart</button>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="product-content">--}}
-{{--                            <h3><a href="single-product.html">Lorem ipsum dolor</a></h3>--}}
-{{--                            <div class="price">--}}
-{{--                                <span>$80.00</span>--}}
-{{--                                <span class="old">$90.11</span>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="single-product">--}}
-{{--                        <div class="product-img">--}}
-{{--                            <a href="single-product.html">--}}
-{{--                                <img src="img/product/13.jpg" alt="" />--}}
-{{--                                <img class="secondary-img" src="img/product/12.jpg" alt="" />--}}
-{{--                            </a>--}}
-{{--                            <span class="tag-line">new</span>--}}
-{{--                            <div class="product-action">--}}
-{{--                                <div class="button-top">--}}
-{{--                                    <a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>--}}
-{{--                                    <a href="#" ><i class="fa fa-heart"></i></a>--}}
-{{--                                </div>--}}
-{{--                                <div class="button-cart">--}}
-{{--                                    <button><i class="fa fa-shopping-cart"></i> add to cart</button>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="product-content">--}}
-{{--                            <h3><a href="single-product.html">Lorem ipsum dolor</a></h3>--}}
-{{--                            <div class="price">--}}
-{{--                                <span>$80.00</span>--}}
-{{--                                <span class="old">$90.11</span>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <!-- single-product end -->--}}
-{{--                <!-- single-product start -->--}}
-{{--                <div class="col-md-12">--}}
-{{--                    <div class="single-product">--}}
-{{--                        <div class="product-img">--}}
-{{--                            <a href="single-product.html">--}}
-{{--                                <img src="img/product/11.jpg" alt="" />--}}
-{{--                                <img class="secondary-img" src="img/product/6.jpg" alt="" />--}}
-{{--                            </a>--}}
-{{--                            <span class="tag-line">new</span>--}}
-{{--                            <div class="product-action">--}}
-{{--                                <div class="button-top">--}}
-{{--                                    <a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>--}}
-{{--                                    <a href="#" ><i class="fa fa-heart"></i></a>--}}
-{{--                                </div>--}}
-{{--                                <div class="button-cart">--}}
-{{--                                    <button><i class="fa fa-shopping-cart"></i> add to cart</button>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="product-content">--}}
-{{--                            <h3><a href="single-product.html">Lorem ipsum dolor</a></h3>--}}
-{{--                            <div class="price">--}}
-{{--                                <span>$80.00</span>--}}
-{{--                                <span class="old">$90.11</span>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="single-product">--}}
-{{--                        <div class="product-img">--}}
-{{--                            <a href="single-product.html">--}}
-{{--                                <img src="img/product/9.jpg" alt="" />--}}
-{{--                                <img class="secondary-img" src="http://cachtrongrausach.vn/upload/administrator/image/dung-cu-lam-vuon/ke-sat-v-lo/gian-trong-rau-sach.jpg" alt="" />--}}
-{{--                            </a>--}}
-{{--                            <span class="tag-line">new</span>--}}
-{{--                            <div class="product-action">--}}
-{{--                                <div class="button-top">--}}
-{{--                                    <a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>--}}
-{{--                                    <a href="#" ><i class="fa fa-heart"></i></a>--}}
-{{--                                </div>--}}
-{{--                                <div class="button-cart">--}}
-{{--                                    <button><i class="fa fa-shopping-cart"></i> add to cart</button>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="product-content">--}}
-{{--                            <h3><a href="single-product.html">Lorem ipsum dolor</a></h3>--}}
-{{--                            <div class="price">--}}
-{{--                                <span>$80.00</span>--}}
-{{--                                <span class="old">$90.11</span>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <!-- single-product end -->--}}
-{{--                <!-- single-product start -->--}}
-{{--                <div class="col-md-12">--}}
-{{--                    <div class="single-product">--}}
-{{--                        <div class="product-img">--}}
-{{--                            <a href="single-product.html">--}}
-{{--                                <img src="img/product/7.jpg" alt="" />--}}
-{{--                                <img class="secondary-img" src="img/product/8.jpg" alt="" />--}}
-{{--                            </a>--}}
-{{--                            <span class="tag-line">new</span>--}}
-{{--                            <div class="product-action">--}}
-{{--                                <div class="button-top">--}}
-{{--                                    <a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>--}}
-{{--                                    <a href="#" ><i class="fa fa-heart"></i></a>--}}
-{{--                                </div>--}}
-{{--                                <div class="button-cart">--}}
-{{--                                    <button><i class="fa fa-shopping-cart"></i> add to cart</button>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="product-content">--}}
-{{--                            <h3><a href="single-product.html">Lorem ipsum dolor</a></h3>--}}
-{{--                            <div class="price">--}}
-{{--                                <span>$80.00</span>--}}
-{{--                                <span class="old">$90.11</span>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="single-product">--}}
-{{--                        <div class="product-img">--}}
-{{--                            <a href="single-product.html">--}}
-{{--                                <img src="img/product/5.jpg" alt="" />--}}
-{{--                                <img class="secondary-img" src="img/product/2.jpg" alt="" />--}}
-{{--                            </a>--}}
-{{--                            <span class="tag-line">new</span>--}}
-{{--                            <div class="product-action">--}}
-{{--                                <div class="button-top">--}}
-{{--                                    <a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>--}}
-{{--                                    <a href="#" ><i class="fa fa-heart"></i></a>--}}
-{{--                                </div>--}}
-{{--                                <div class="button-cart">--}}
-{{--                                    <button><i class="fa fa-shopping-cart"></i> add to cart</button>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="product-content">--}}
-{{--                            <h3><a href="single-product.html">Lorem ipsum dolor</a></h3>--}}
-{{--                            <div class="price">--}}
-{{--                                <span>$80.00</span>--}}
-{{--                                <span class="old">$90.11</span>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <!-- single-product end -->--}}
-{{--                <!-- single-product start -->--}}
-{{--                <div class="col-md-12">--}}
-{{--                    <div class="single-product">--}}
-{{--                        <div class="product-img">--}}
-{{--                            <a href="single-product.html">--}}
-{{--                                <img src="img/product/1.jpg" alt="" />--}}
-{{--                                <img class="secondary-img" src="img/product/2.jpg" alt="" />--}}
-{{--                            </a>--}}
-{{--                            <span class="tag-line">new</span>--}}
-{{--                            <div class="product-action">--}}
-{{--                                <div class="button-top">--}}
-{{--                                    <a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>--}}
-{{--                                    <a href="#" ><i class="fa fa-heart"></i></a>--}}
-{{--                                </div>--}}
-{{--                                <div class="button-cart">--}}
-{{--                                    <button><i class="fa fa-shopping-cart"></i> add to cart</button>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="product-content">--}}
-{{--                            <h3><a href="single-product.html">Lorem ipsum dolor</a></h3>--}}
-{{--                            <div class="price">--}}
-{{--                                <span>$80.00</span>--}}
-{{--                                <span class="old">$90.11</span>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="single-product">--}}
-{{--                        <div class="product-img">--}}
-{{--                            <a href="single-product.html">--}}
-{{--                                <img src="img/product/9.jpg" alt="" />--}}
-{{--                                <img class="secondary-img" src="img/product/10.jpg" alt="" />--}}
-{{--                            </a>--}}
-{{--                            <span class="tag-line">new</span>--}}
-{{--                            <div class="product-action">--}}
-{{--                                <div class="button-top">--}}
-{{--                                    <a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>--}}
-{{--                                    <a href="#" ><i class="fa fa-heart"></i></a>--}}
-{{--                                </div>--}}
-{{--                                <div class="button-cart">--}}
-{{--                                    <button><i class="fa fa-shopping-cart"></i> add to cart</button>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="product-content">--}}
-{{--                            <h3><a href="single-product.html">Lorem ipsum dolor</a></h3>--}}
-{{--                            <div class="price">--}}
-{{--                                <span>$80.00</span>--}}
-{{--                                <span class="old">$90.11</span>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <!-- single-product end -->--}}
-{{--                <!-- single-product start -->--}}
-{{--                <div class="col-md-12">--}}
-{{--                    <div class="single-product">--}}
-{{--                        <div class="product-img">--}}
-{{--                            <a href="single-product.html">--}}
-{{--                                <img src="img/product/12.jpg" alt="" />--}}
-{{--                                <img class="secondary-img" src="img/product/18.jpg" alt="" />--}}
-{{--                            </a>--}}
-{{--                            <span class="tag-line">new</span>--}}
-{{--                            <div class="product-action">--}}
-{{--                                <div class="button-top">--}}
-{{--                                    <a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>--}}
-{{--                                    <a href="#" ><i class="fa fa-heart"></i></a>--}}
-{{--                                </div>--}}
-{{--                                <div class="button-cart">--}}
-{{--                                    <button><i class="fa fa-shopping-cart"></i> add to cart</button>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="product-content">--}}
-{{--                            <h3><a href="single-product.html">Lorem ipsum dolor</a></h3>--}}
-{{--                            <div class="price">--}}
-{{--                                <span>$80.00</span>--}}
-{{--                                <span class="old">$90.11</span>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="single-product">--}}
-{{--                        <div class="product-img">--}}
-{{--                            <a href="single-product.html">--}}
-{{--                                <img src="http://cachtrongrausach.vn/upload/administrator/image/dung-cu-lam-vuon/ke-sat-v-lo/gian-trong-rau-sach.jpg" alt="" />--}}
-{{--                                <img class="secondary-img" src="http://cachtrongrausach.vn/upload/administrator/image/dung-cu-lam-vuon/ke-sat-v-lo/gian-trong-rau-sach.jpg" alt="" />--}}
-{{--                            </a>--}}
-{{--                            <span class="tag-line">new</span>--}}
-{{--                            <div class="product-action">--}}
-{{--                                <div class="button-top">--}}
-{{--                                    <a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>--}}
-{{--                                    <a href="#" ><i class="fa fa-heart"></i></a>--}}
-{{--                                </div>--}}
-{{--                                <div class="button-cart">--}}
-{{--                                    <button><i class="fa fa-shopping-cart"></i> add to cart</button>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="product-content">--}}
-{{--                            <h3><a href="single-product.html">Lorem ipsum dolor</a></h3>--}}
-{{--                            <div class="price">--}}
-{{--                                <span>$80.00</span>--}}
-{{--                                <span class="old">$90.11</span>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <!-- single-product end -->--}}
-{{--                <!-- single-product start -->--}}
-{{--                <div class="col-md-12">--}}
-{{--                    <div class="single-product">--}}
-{{--                        <div class="product-img">--}}
-{{--                            <a href="single-product.html">--}}
-{{--                                <img src="http://cachtrongrausach.vn/upload/administrator/image/dung-cu-lam-vuon/ke-sat-v-lo/gian-trong-rau-sach.jpg" alt="" />--}}
-{{--                                <img class="secondary-img" src="http://cachtrongrausach.vn/upload/administrator/image/dung-cu-lam-vuon/ke-sat-v-lo/gian-trong-rau-sach.jpg" alt="" />--}}
-{{--                            </a>--}}
-{{--                            <span class="tag-line">new</span>--}}
-{{--                            <div class="product-action">--}}
-{{--                                <div class="button-top">--}}
-{{--                                    <a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>--}}
-{{--                                    <a href="#" ><i class="fa fa-heart"></i></a>--}}
-{{--                                </div>--}}
-{{--                                <div class="button-cart">--}}
-{{--                                    <button><i class="fa fa-shopping-cart"></i> add to cart</button>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="product-content">--}}
-{{--                            <h3><a href="single-product.html">Lorem ipsum dolor</a></h3>--}}
-{{--                            <div class="price">--}}
-{{--                                <span>$80.00</span>--}}
-{{--                                <span class="old">$90.11</span>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="single-product">--}}
-{{--                        <div class="product-img">--}}
-{{--                            <a href="single-product.html">--}}
-{{--                                <img src="http://cachtrongrausach.vn/upload/administrator/image/dung-cu-lam-vuon/ke-sat-v-lo/gian-trong-rau-sach.jpg" alt="" />--}}
-{{--                                <img class="secondary-img" src="http://cachtrongrausach.vn/upload/administrator/image/dung-cu-lam-vuon/ke-sat-v-lo/gian-trong-rau-sach.jpg" alt="" />--}}
-{{--                            </a>--}}
-{{--                            <span class="tag-line">new</span>--}}
-{{--                            <div class="product-action">--}}
-{{--                                <div class="button-top">--}}
-{{--                                    <a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>--}}
-{{--                                    <a href="#" ><i class="fa fa-heart"></i></a>--}}
-{{--                                </div>--}}
-{{--                                <div class="button-cart">--}}
-{{--                                    <button><i class="fa fa-shopping-cart"></i> add to cart</button>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="product-content">--}}
-{{--                            <h3><a href="single-product.html">Lorem ipsum dolor</a></h3>--}}
-{{--                            <div class="price">--}}
-{{--                                <span>$80.00</span>--}}
-{{--                                <span class="old">$90.11</span>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <!-- single-product end -->--}}
-{{--                <!-- single-product start -->--}}
-{{--                <div class="col-md-12">--}}
-{{--                    <div class="single-product">--}}
-{{--                        <div class="product-img">--}}
-{{--                            <a href="single-product.html">--}}
-{{--                                <img src="http://cachtrongrausach.vn/upload/administrator/image/dung-cu-lam-vuon/ke-sat-v-lo/gian-trong-rau-sach.jpg" alt="" />--}}
-{{--                                <img class="secondary-img" src="http://cachtrongrausach.vn/upload/administrator/image/dung-cu-lam-vuon/ke-sat-v-lo/gian-trong-rau-sach.jpg" alt="" />--}}
-{{--                            </a>--}}
-{{--                            <span class="tag-line">new</span>--}}
-{{--                            <div class="product-action">--}}
-{{--                                <div class="button-top">--}}
-{{--                                    <a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>--}}
-{{--                                    <a href="#" ><i class="fa fa-heart"></i></a>--}}
-{{--                                </div>--}}
-{{--                                <div class="button-cart">--}}
-{{--                                    <button><i class="fa fa-shopping-cart"></i> add to cart</button>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="product-content">--}}
-{{--                            <h3><a href="single-product.html">Lorem ipsum dolor</a></h3>--}}
-{{--                            <div class="price">--}}
-{{--                                <span>$80.00</span>--}}
-{{--                                <span class="old">$90.11</span>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="single-product">--}}
-{{--                        <div class="product-img">--}}
-{{--                            <a href="single-product.html">--}}
-{{--                                <img src="http://cachtrongrausach.vn/upload/administrator/image/dung-cu-lam-vuon/ke-sat-v-lo/gian-trong-rau-sach.jpg" alt="" />--}}
-{{--                                <img class="secondary-img" src="http://cachtrongrausach.vn/upload/administrator/image/dung-cu-lam-vuon/ke-sat-v-lo/gian-trong-rau-sach.jpg" alt="" />--}}
-{{--                            </a>--}}
-{{--                            <span class="tag-line">new</span>--}}
-{{--                            <div class="product-action">--}}
-{{--                                <div class="button-top">--}}
-{{--                                    <a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>--}}
-{{--                                    <a href="#" ><i class="fa fa-heart"></i></a>--}}
-{{--                                </div>--}}
-{{--                                <div class="button-cart">--}}
-{{--                                    <button><i class="fa fa-shopping-cart"></i> add to cart</button>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="product-content">--}}
-{{--                            <h3><a href="single-product.html">Lorem ipsum dolor</a></h3>--}}
-{{--                            <div class="price">--}}
-{{--                                <span>$80.00</span>--}}
-{{--                                <span class="old">$90.11</span>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <!-- single-product end -->--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-{{--</div>--}}
-<!-- category-area end -->
 <!-- latest-blog-area start -->
 <div class="latest-blog-area pad-60">
     <div class="container">
@@ -1104,101 +509,54 @@
                 <div class="col-md-12">
                     <div class="blog-wrapper">
                         <div class="blog-img">
-                            <a href="single-blog.html"><img src="http://cachtrongrausach.vn/upload/administrator/image/dung-cu-lam-vuon/ke-sat-v-lo/gian-trong-rau-sach.jpg" alt="" /></a>
+                            <a href="single-blog.html"><img src="https://www.thaythuoccuaban.com/vithuoc/vithuocimages/diep.jpg" alt="" /></a>
                         </div>
                         <div class="blog-content">
-                            <h3><a href="single-blog.html">Lorem ipsum dolor sit</a></h3>
+                            <h3><a href="single-blog.html">Nguồn cung cấp vitamin A tuyệt vời cho cơ thể</a></h3>
                             <div class="blog-meta">
                                 <span class="blog-date">sep 21,2015</span>
                                 <span class="blog-author">By <a href="#">ThemeBuz</a></span>
                                 <span class="blog-cat">in <a href="#">men's Style</a></span>
                             </div>
-                            <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut .....</p>
+                            <p>Rau diếp có lá màu xanh sáng là loại rau rất giàu chất dinh dưỡng và đặc biệt có lợi cho sức khỏe của bạn</p>
                             <a class="read-more" href="#">Read more <i class="fa fa-angle-right"></i> <i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-12">
                     <div class="blog-wrapper">
                         <div class="blog-img">
-                            <a href="single-blog.html"><img src="http://cachtrongrausach.vn/upload/administrator/image/dung-cu-lam-vuon/ke-sat-v-lo/gian-trong-rau-sach.jpg" alt="" /></a>
+                            <a href="single-blog.html"><img src="https://image-cdn.vtcns.com/files/phamquy/2018/09/01/tac-dung-cua-rau-ngot-voi-phu-nu-sau-sinh-1320556.jpg" alt="" /></a>
                         </div>
                         <div class="blog-content">
-                            <h3><a href="single-blog.html">Lorem ipsum dolor sit</a></h3>
+                            <h3><a href="single-blog.html">Nguồn cung cấp vitamin A tuyệt vời cho cơ thể</a></h3>
                             <div class="blog-meta">
                                 <span class="blog-date">sep 21,2015</span>
                                 <span class="blog-author">By <a href="#">ThemeBuz</a></span>
                                 <span class="blog-cat">in <a href="#">men's Style</a></span>
                             </div>
-                            <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut .....</p>
+                            <p>Theo Đông y, rau ngót có tính mát, vị ngọt, tác dụng thanh nhiệt, giải độc, bổ huyết, nhuận tràng.... Thành phần dinh dưỡng của rau ngót chứa lượng đạm thực vật cao nên rau ngót được khuyên dùng thay thế đạm động vật.</p>
                             <a class="read-more" href="#">Read more <i class="fa fa-angle-right"></i> <i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-12">
                     <div class="blog-wrapper">
                         <div class="blog-img">
-                            <a href="single-blog.html"><img src="http://cachtrongrausach.vn/upload/administrator/image/dung-cu-lam-vuon/ke-sat-v-lo/gian-trong-rau-sach.jpg" alt="" /></a>
+                            <a href="single-blog.html"><img src="https://zenco.com.vn/wp-content/uploads/2019/09/b%C3%A0-b%E1%BA%A7u-%C4%83n-rau-mu%E1%BB%91ng-1.jpg" alt="" /></a>
                         </div>
                         <div class="blog-content">
-                            <h3><a href="single-blog.html">Lorem ipsum dolor sit</a></h3>
+                            <h3><a href="single-blog.html">Nguồn cung cấp vitamin A tuyệt vời cho cơ thể</a></h3>
                             <div class="blog-meta">
                                 <span class="blog-date">sep 21,2015</span>
                                 <span class="blog-author">By <a href="#">ThemeBuz</a></span>
                                 <span class="blog-cat">in <a href="#">men's Style</a></span>
                             </div>
-                            <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut .....</p>
+                            <p>Rau muống là loại thực phẩm quen thuộc với mọi gia đình Việt. Đặc biệt, món rau muống xào tỏi xanh giòn có mùi vị đặc biệt hấp dẫn. Không chỉ ngon, rau muống còn có nhiều lợi ích cho sức khỏe. </p>
                             <a class="read-more" href="#">Read more <i class="fa fa-angle-right"></i> <i class="fa fa-angle-right"></i></a>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="blog-wrapper">
-                        <div class="blog-img">
-                            <a href="single-blog.html"><img src="http://cachtrongrausach.vn/upload/administrator/image/dung-cu-lam-vuon/ke-sat-v-lo/gian-trong-rau-sach.jpg" alt="" /></a>
-                        </div>
-                        <div class="blog-content">
-                            <h3><a href="single-blog.html">Lorem ipsum dolor sit</a></h3>
-                            <div class="blog-meta">
-                                <span class="blog-date">sep 21,2015</span>
-                                <span class="blog-author">By <a href="#">ThemeBuz</a></span>
-                                <span class="blog-cat">in <a href="#">men's Style</a></span>
-                            </div>
-                            <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut .....</p>
-                            <a class="read-more" href="#">Read more <i class="fa fa-angle-right"></i> <i class="fa fa-angle-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="blog-wrapper">
-                        <div class="blog-img">
-                            <a href="single-blog.html"><img src="http://cachtrongrausach.vn/upload/administrator/image/dung-cu-lam-vuon/ke-sat-v-lo/gian-trong-rau-sach.jpg" alt="" /></a>
-                        </div>
-                        <div class="blog-content">
-                            <h3><a href="single-blog.html">Lorem ipsum dolor sit</a></h3>
-                            <div class="blog-meta">
-                                <span class="blog-date">sep 21,2015</span>
-                                <span class="blog-author">By <a href="#">ThemeBuz</a></span>
-                                <span class="blog-cat">in <a href="#">men's Style</a></span>
-                            </div>
-                            <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut .....</p>
-                            <a class="read-more" href="#">Read more <i class="fa fa-angle-right"></i> <i class="fa fa-angle-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-blog">
-                        <a href="single-blog.html"><img src="http://cachtrongrausach.vn/upload/administrator/image/dung-cu-lam-vuon/ke-sat-v-lo/gian-trong-rau-sach.jpg" alt="" /></a>
-                    </div>
-                    <div class="blog-content">
-                        <h3><a href="single-blog.html">Lorem ipsum dolor sit</a></h3>
-                        <div class="blog-meta">
-                            <span class="blog-date">sep 21,2015</span>
-                            <span class="blog-author">By <a href="#">ThemeBuz</a></span>
-                            <span class="blog-cat">in <a href="#">men's Style</a></span>
-                        </div>
-                        <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut .....</p>
-                        <a class="read-more" href="#">Read more <i class="fa fa-angle-right"></i> <i class="fa fa-angle-right"></i></a>
                     </div>
                 </div>
             </div>

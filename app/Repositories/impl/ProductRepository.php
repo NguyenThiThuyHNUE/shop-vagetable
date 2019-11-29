@@ -71,4 +71,10 @@ class ProductRepository implements ProductRepositoryInterface
             DB::table('products')->orWhere('productName', 'like',
                 '%' . $keySearch . '%')->get();
     }
+
+    public function edit($id)
+    {
+        $product = Product::findOrFail($id);
+        return $product;
+    }
 }

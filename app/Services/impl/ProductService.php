@@ -60,4 +60,9 @@ class ProductService implements ProductServiceInterface
     {
         return $this->productRepository->findByKey($keySearch);
     }
+
+    public function edit($id)
+    {
+        return $this->productRepository->edit($id);
+    }
 }

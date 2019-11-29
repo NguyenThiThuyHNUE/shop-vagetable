@@ -13,11 +13,11 @@
                             @method("put")
                             @csrf
                             <div class="form-group row">
-                                <label for="" class="col-md-4 col-form-label text-md-right">
+                                <label for="" class="col-md-4 col-form-label text-md-right" >
                                     Name
                                 </label>
                                 <div class="col-md-6">
-                                    <input type="text" name="productName" class="form-control">
+                                    <input type="text" name="productName" class="form-control" value="{{$product->productName}}">
                                 </div>
                                 @if($errors-> has('productName'))
                                     <span class="text-danger">{{$errors->first('productName')}}</span>
@@ -28,7 +28,7 @@
                                     Price
                                 </label>
                                 <div class="col-md-6">
-                                    <input type="text" name="productPrice" class="form-control">
+                                    <input type="text" name="productPrice" class="form-control" value="{{$product->productPrice}}">
                                 </div>
                                 @if($errors-> has('productPrice'))
                                     <span class="text-danger">{{$errors->first('productPrice')}}</span>
@@ -38,7 +38,7 @@
                             <div class="form-group">
                                 <label for="image" class="col-md-4 col-form-label text-md-right">Product Image</label>
 
-                                <input type="file" class="" name="image">
+                                <input type="file" class="" name="image" >
                             </div>
 
 
