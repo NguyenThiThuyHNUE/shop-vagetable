@@ -84,4 +84,8 @@ class HomeController extends Controller
         $products = $this->productService->getAll();
         return view('home.home', compact('products'));
     }
+
+    public function info(){
+        return view('home.info.index');
+    }
 }

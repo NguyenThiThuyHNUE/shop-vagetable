@@ -41,6 +41,7 @@ Route::prefix('home')->group(function () {
     Route::get('/login/{id?}', 'HomeController@index')->name('home.login');
     Route::get('/detail/{id}', 'HomeController@detail')->name('home.detail');
     Route::post('/search', 'HomeController@search')->name('home.search');
+    Route::get('/info', 'HomeController@info')->name('home.info');
     Route::get('/check-out', 'HomeController@checkOut')->name('home.check-out')->middleware('auth');
 
 });

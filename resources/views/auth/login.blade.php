@@ -334,47 +334,47 @@
                 <div class="brand-curosel">
                     <div class="col-md-12">
                         <div class="single-brand">
-                            <a href="#"><img src="img/brand/1.png" alt="" /></a>
+                            <a href="#"><img src="https://ivcdn.vnecdn.net/suckhoe/images/web/2019/10/19/chat-xo-1571496757_500x300.jpg" alt="" /></a>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="single-brand">
-                            <a href="#"><img src="img/brand/1.png" alt="" /></a>
+                            <a href="#"><img src="https://ivcdn.vnecdn.net/suckhoe/images/web/2019/10/19/chat-xo-1571496757_500x300.jpg" alt="" /></a>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="single-brand">
-                            <a href="#"><img src="img/brand/1.png" alt="" /></a>
+                            <a href="#"><img src="https://ivcdn.vnecdn.net/suckhoe/images/web/2019/10/19/chat-xo-1571496757_500x300.jpg" alt="" /></a>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="single-brand">
-                            <a href="#"><img src="img/brand/1.png" alt="" /></a>
+                            <a href="#"><img src="https://ivcdn.vnecdn.net/suckhoe/images/web/2019/10/19/chat-xo-1571496757_500x300.jpg" alt="" /></a>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="single-brand">
-                            <a href="#"><img src="img/brand/1.png" alt="" /></a>
+                            <a href="#"><img src="https://ivcdn.vnecdn.net/suckhoe/images/web/2019/10/19/chat-xo-1571496757_500x300.jpg" alt="" /></a>
+                    </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="single-brand">
+                            <a href="#"><img src="https://ivcdn.vnecdn.net/suckhoe/images/web/2019/10/19/chat-xo-1571496757_500x300.jpg" alt="" /></a>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="single-brand">
-                            <a href="#"><img src="img/brand/1.png" alt="" /></a>
+                            <a href="#"><img src="https://ivcdn.vnecdn.net/suckhoe/images/web/2019/10/19/chat-xo-1571496757_500x300.jpg" alt="" /></a>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="single-brand">
-                            <a href="#"><img src="img/brand/1.png" alt="" /></a>
+                            <a href="#"><img src="https://ivcdn.vnecdn.net/suckhoe/images/web/2019/10/19/chat-xo-1571496757_500x300.jpg" alt="" /></a>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="single-brand">
-                            <a href="#"><img src="img/brand/1.png" alt="" /></a>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="single-brand">
-                            <a href="#"><img src="img/brand/1.png" alt="" /></a>
+                            <a href="#"><img src="https://ivcdn.vnecdn.net/suckhoe/images/web/2019/10/19/chat-xo-1571496757_500x300.jpg" alt="" /></a>
                         </div>
                     </div>
                 </div>

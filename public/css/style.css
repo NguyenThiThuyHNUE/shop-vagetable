@@ -1352,12 +1352,12 @@ h3.sidebar-title::before {
 12. breadcrumb-area
 -------------------------------------*/
 .breadcrumb-area {
-  background: rgba(0, 0, 0, 0) url("img/s2.jpg") no-repeat scroll center top;
+  background: rgba(0, 0, 0, 0) url("https://vinid.net/wp-content/uploads/2019/07/shutterstock_598749548.jpg") no-repeat scroll center top;
   padding: 215px 0 135px;
   position:relative
 }
 .breadcrumb-area::before {
-  background: #000 none repeat scroll 0 0;
+  background-image:  url("https://vinid.net/wp-content/uploads/2019/07/shutterstock_598749548.jpg");
   content: "";
   height: 100%;
   opacity: 0.4;

@@ -127,6 +127,7 @@
                                         </ul>
                                     </li>
                                     <li><a href="{{ route('shopBill.getBill') }}">Mybill</a></li>
+                                    <li><a href="{{ route('home.info') }}">Infomation</a></li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{ route('carts.index') }}">
                                 <span>{{__('layout_home.cart')}} &nbsp;<span>@if(Session::has('cart'))
@@ -311,8 +312,9 @@
                     <a href="#">
                         <img src="https://toplist.vn/images/800px/rau-sach-van-noi-283347.jpg" alt="" />
                         <div class="banner-caption">
-                            <h2>Trà <span>kem ngọt</span></h2>
-                            <p><i>Hương vị đặc biệt của bọt sữa làm vị trà thơm ngon hơn,hòa quyện cùng mùi vị trái cây sẽ làm bạn không thể quên được thức uống đặc biệt này.</i></p>
+                            <h2>Enhance<span>vision</span></h2>
+                            <p><i>
+                                    Eating greens regularly is good for eyesight because greens are high in antioxidants as well as vitamin A</i></p>
                         </div>
                     </a>
                 </div>
@@ -322,8 +324,9 @@
                     <a href="#">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRGcMYL4KE4KEfPFbXLC4qXNIUygXqz9Z6p6HAAL9ftSAlnbK8a" alt="" />
                         <div class="banner-caption">
-                            <h2>Trà <span>nguyên chất</span></h2>
-                            <p><i>Hương vị tự nhiên của các lá trà được lên men,mang đến dư vị ngọt ngào khỏe mạnh từ thiên nhiên.</i></p>
+                            <h2>Fresh  <span>vegetables </span></h2>
+                            <p><i>The nutrients in green vegetables can prevent many diseases. That is also why we should eat lots of green vegetables
+                                </i></p>
                         </div>
                     </a>
                 </div>
@@ -333,8 +336,8 @@
                     <a href="#">
                         <img src="http://image.baolongan.vn/news/2018/20180904/images/S%E1%BA%A3n-xu%E1%BA%A5t-rau-s%E1%BA%A1ch-mang-l%E1%BA%A1i-hi%E1%BB%87u-qu%E1%BA%A3-cao.jpg" alt="" />
                         <div class="banner-caption">
-                            <h2>Trà <span>trái cây tươi</span></h2>
-                            <p><i>Sự tươi mới của trái cây kết hợp cùng chút ngọt ngào của lá trà mang vị thiên nhiên thuần khiết trong mỗi lần chạm môi.</i></p>
+                            <h2>Maintain<span>youthfulness</span></h2>
+                            <p><i>Because green vegetables contain compounds that fight free radical damage, eating green leafy vegetables will slow down the aging process and maintain youthfulness.</i></p>
                         </div>
                     </a>
                 </div>
@@ -348,7 +351,7 @@
     <div class="container">
         <div class="row">
             <div class="section-title">
-                <h2>Sản phẩm phổ biến nhất</h2>
+                <h2>THE MOST POPULAR PRODUCTS</h2>
                 <div class="title-icon">
                     <span><i class="fa fa-angle-left"></i> <i class="fa fa-angle-right"></i></span>
                 </div>
@@ -359,9 +362,7 @@
                 <div class="product-tab">
                     <!-- Nav tabs -->
                     <ul class="product-nav" role="tablist">
-                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">fresh fruit</a></li>
-                        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Trà sữa</a></li>
-                        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Matcha</a></li>
+                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Vagetables</a></li>
                     </ul>
 
                     <!-- Tab panes -->
@@ -406,82 +407,49 @@
                                 </div>
                             </div>
                         </div>
-                        <div role="tabpanel" class="tab-pane" id="profile">
-                            <div class="row">
-                                <div class="product-curosel">
-                                @foreach($products as $product)
-                                    <!-- single-product start -->
-                                        <div class="col-md-12">
-                                            <div class="single-product">
-                                                <div class="product-img">
-                                                    <a href="{{ route('home.detail',$product->id) }}">
-                                                        <img  src="{{ asset("storage/$product->image") }}" alt="" />
-                                                        <img class="secondary-img" src="img/product/xoai.png" alt="" />
-                                                    </a>
-                                                    <span class="tag-line">new</span>
-                                                    <div class="product-action">
-                                                        <div class="button-top">
-                                                            <a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>
-                                                            <a href="#" ><i class="fa fa-heart"></i></a>
-                                                        </div>
-                                                        <div class="button-cart">
-                                                            <button><i class="fa fa-shopping-cart"></i> add to cart</button>
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="home">
+                                <div class="row">
+                                    <div class="product-curosel" >
+                                    @foreach($products as $product)
+                                        <!-- single-product start -->
+                                            <div class="col-md-12">
+                                                <div class="single-product">
+                                                    <div class="product-img">
+                                                        <a href="{{ route('home.detail',$product->id) }}">
+                                                            <img  src="{{ asset("storage/$product->image") }}" alt="" />
+                                                            <img class="secondary-img" src="img/product/xoai.png" alt="" />
+                                                        </a>
+                                                        <span class="tag-line">new</span>
+                                                        <div class="product-action">
+                                                            <div class="button-top">
+                                                                <a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>
+                                                                <a href="#" ><i class="fa fa-heart"></i></a>
+                                                            </div>
+                                                            <div class="button-cart">
+                                                                <form method="post" action="{{ route('changeCart', $product->id) }}">
+                                                                    @csrf
+                                                                    <button type="submit"><i class="fa fa-shopping-cart" href=""></i> add to cart</button></button>
+                                                                </form>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="product-content">
-                                                    <h3><a href="single-product.html">{{ $product->productName }}</a></h3>
-                                                    <div class="price">
-                                                        <span>{{ number_format($product->productPrice).' VND' }}</span>
-                                                        <span class="old">$80.11</span>
+                                                    <div class="product-content">
+                                                        <h3><a href="single-product.html">{{ $product->productName }}</a></h3>
+                                                        <div class="price">
+                                                            <span>{{ number_format($product->productPrice).' VND' }}</span>
+                                                            <span class="old">$80.11</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
 
-                                    @endforeach
-                                </div>
-{{--                                    <!-- single-product end -->--}}
-
+                                        @endforeach
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div role="tabpanel" class="tab-pane" id="messages">
-                            <div class="row">
-                                <div class="product-curosel">
-                                    <!-- single-product start -->
-                                @foreach($products as $product)
-                                    <!-- single-product start -->
-                                        <div class="col-md-12">
-                                            <div class="single-product">
-                                                <div class="product-img">
-                                                    <a href="{{ route('home.detail',$product->id) }}">
-                                                        <img  src="{{ asset("storage/$product->image") }}" alt="" />
-                                                        <img class="secondary-img" src="img/product/xoai.png" alt="" />
-                                                    </a>
-                                                    <span class="tag-line">new</span>
-                                                    <div class="product-action">
-                                                        <div class="button-top">
-                                                            <a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>
-                                                            <a href="#" ><i class="fa fa-heart"></i></a>
-                                                        </div>
-                                                        <div class="button-cart">
-                                                            <button><i class="fa fa-shopping-cart"></i> add to cart</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-content">
-                                                    <h3><a href="single-product.html">{{ $product->productName }}</a></h3>
-                                                    <div class="price">
-                                                        <span>{{ number_format($product->productPrice).' VND' }}</span>
-                                                        <span class="old">$80.11</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
 
-                                    @endforeach
-                                </div>
+
 {{--                                    <!-- single-product end -->--}}
 
                                 </div>
@@ -512,13 +480,14 @@
                             <a href="single-blog.html"><img src="https://www.thaythuoccuaban.com/vithuoc/vithuocimages/diep.jpg" alt="" /></a>
                         </div>
                         <div class="blog-content">
-                            <h3><a href="single-blog.html">Nguồn cung cấp vitamin A tuyệt vời cho cơ thể</a></h3>
+                            <h3><a href="single-blog.html">Great source of vitamin A for the body</a></h3>
                             <div class="blog-meta">
                                 <span class="blog-date">sep 21,2015</span>
                                 <span class="blog-author">By <a href="#">ThemeBuz</a></span>
                                 <span class="blog-cat">in <a href="#">men's Style</a></span>
                             </div>
-                            <p>Rau diếp có lá màu xanh sáng là loại rau rất giàu chất dinh dưỡng và đặc biệt có lợi cho sức khỏe của bạn</p>
+                            <p>
+                                Lettuce, with its bright green leaves, is a very rich vegetable and especially beneficial for your health</p>
                             <a class="read-more" href="#">Read more <i class="fa fa-angle-right"></i> <i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>
@@ -530,7 +499,7 @@
                             <a href="single-blog.html"><img src="https://image-cdn.vtcns.com/files/phamquy/2018/09/01/tac-dung-cua-rau-ngot-voi-phu-nu-sau-sinh-1320556.jpg" alt="" /></a>
                         </div>
                         <div class="blog-content">
-                            <h3><a href="single-blog.html">Nguồn cung cấp vitamin A tuyệt vời cho cơ thể</a></h3>
+                            <h3><a href="single-blog.html">Great source of vitamin A for the body</a></h3>
                             <div class="blog-meta">
                                 <span class="blog-date">sep 21,2015</span>
                                 <span class="blog-author">By <a href="#">ThemeBuz</a></span>

@@ -214,11 +214,11 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="breadcrumb-list">
-                    <h1>Checkout</h1>
+                    <h1>My Bills</h1>
                     <ul>
                         <li><a href="{{ route('home') }}">home</a> <span class="divider">|</span></li>
                         <li><a href="{{ route('home') }}">Shopping cart</a> <span class="divider">|</span></li>
-                        <li>Checkout</li>
+                        <li>My Bills</li>
                     </ul>
                 </div>
             </div>
