@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  server:
+    image: nginx
+    container_name: nginx_server_vegetable
+    ports:
+      - 8010:80
+  backend:
+    build: .
+    container_name: laravel-vegetable
+    ports:
+      - 8000:8000
+    volumes:
+      - .:/app
+  db:
+    image: mysql:5.7
+    container_name: vegetable.db
+    hostname: vegetable.db
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 1
+      MYSQL_DATABASE: vegetable
+    ports:
+      - 3306:3306
+

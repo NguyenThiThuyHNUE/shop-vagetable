@@ -27,11 +27,19 @@ class AdminsSeeder extends Seeder
         $admin->password = \Illuminate\Support\Facades\Hash::make('password');
         $admin->assignRole('init_manage');
         $admin->save();
+
         $admin = new \App\Admin();
         $admin->name = 'admin-two';
         $admin->email = 'invoiceManage@example.com';
         $admin->password = \Illuminate\Support\Facades\Hash::make('password');
         $admin->assignRole('invoice_manage');
+        $admin->save();
+
+        $admin = new \App\Admin();
+        $admin->name = 'admin-three';
+        $admin->email = 'shipmentManage@example.com';
+        $admin->password = \Illuminate\Support\Facades\Hash::make('password');
+        $admin->assignRole('shipment_manage');
         $admin->save();
 
 
