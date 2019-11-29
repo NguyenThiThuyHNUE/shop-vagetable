@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\AdminRequestForm;
 use App\Repositories\impl\AdminService;
-use App\Services\AdminServiceInterface;
 use App\Services\BillServiceInterface;
 use App\Services\ProductServiceInterface;
 use App\Services\UserServiceInterface;
@@ -29,7 +28,7 @@ class AdminController extends Controller
      */
     private $billService;
     /**
-     * @var \AdminServiceInterface
+     * @var AdminService
      */
     private $adminService;
 
@@ -45,7 +44,7 @@ class AdminController extends Controller
         $adminRoles = $this->adminService->getAdminRoles();
         $data = $this->adminService->getAll();
         $this->adminService->getAdminRole();
-        return view('admin.admin-home',compact('data','adminRoles'));
+        return view('admin.admin-home', compact('data', 'adminRoles'));
     }
 
     public function showLoginForm()

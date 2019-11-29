@@ -31,10 +31,11 @@ Route::prefix('admin')->group(function () {
     Route::get('/password/reset/{token}', 'Admin\AdminResetPasswordController@showResetForm')->name('admin.password.showResetForm');
 });
 
-
 Route::resource('users', 'UserController');
+Route::resource('employees', 'EmployeeController');
 Route::resource('bills', 'BillController');
 Route::resource('products', 'ProductController');
+Route::get('shiments', 'ShipController@index')->name('shipments.index');
 
 
 Route::prefix('home')->group(function () {

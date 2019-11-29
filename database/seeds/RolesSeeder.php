@@ -17,6 +17,7 @@ class RolesSeeder extends Seeder
         Role::create(['name' => 'admin', 'guard_name' => 'web', 'objManage' => 'Shop']);
         Role::create(['name' => 'init_manage', 'guard_name' => 'web', 'objManage' => 'Product']);
         Role::create(['name' => 'invoice_manage', 'guard_name' => 'web', 'objManage' => 'Bill']);
+        Role::create(['name' => 'shipment_manage', 'guard_name' => 'web', 'objManage' => 'Shipment']);
 
         Permission::create(['name' => 'create_admin']);
 
@@ -30,6 +31,11 @@ class RolesSeeder extends Seeder
         Permission::create(['name' => 'update_bill']);
         Permission::create(['name' => 'delete_bill']);
 
+        Permission::create(['name' => 'create_employee']);
+        Permission::create(['name' => 'read_employee']);
+        Permission::create(['name' => 'update_employee']);
+        Permission::create(['name' => 'delete_employee']);
+
         $admin = Role::findById(1);
         $admin->givePermissionTo(Permission::all());
 
@@ -42,5 +48,10 @@ class RolesSeeder extends Seeder
         $invoiceManage->givePermissionTo(Permission::findById(5));
         $invoiceManage->givePermissionTo(Permission::findById(6));
         $invoiceManage->givePermissionTo(Permission::findById(7));
+
+        $invoiceManage = Role::findById(4);
+        $invoiceManage->givePermissionTo(Permission::findById(8));
+        $invoiceManage->givePermissionTo(Permission::findById(9));
+        $invoiceManage->givePermissionTo(Permission::findById(10));
     }
 }
