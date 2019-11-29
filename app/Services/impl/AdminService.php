@@ -11,6 +11,7 @@ use App\Services\BillServiceInterface;
 use App\Services\ProductServiceInterface;
 use App\Services\UserServiceInterface;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Spatie\Permission\Models\Role;
 
@@ -32,16 +33,22 @@ class AdminService implements AdminServiceInterface
      * @var AdminRepositoryInterface
      */
     private $adminRepository;
+    /**
+     * @var EmployeeRepository
+     */
+    private $employeeRepository;
 
     public function __construct(UserServiceInterface $userService,
                                 ProductServiceInterface $productService,
                                 AdminRepositoryInterface $adminRepository,
+                                EmployeeRepository $employeeRepository,
                                 BillServiceInterface $billService)
     {
         $this->userService = $userService;
         $this->productService = $productService;
         $this->billService = $billService;
         $this->adminRepository = $adminRepository;
+        $this->employeeRepository = $employeeRepository;
     }
 
     public function getAll()
@@ -49,9 +56,14 @@ class AdminService implements AdminServiceInterface
         $user = $this->userService->getAll();
         $product = $this->productService->getAll();
         $bill = $this->billService->getAll();
+        $employee = $this->employeeRepository->getAll();
+        $shipments = $this->getShipments();
         return ['USER' => [$user, 'user'],
             'PRODUCT' => [$product, 'product'],
+            'EMPLOYEE' => [$employee, 'employee'],
+            'SHIPMENTS' => [$shipments, 'shipment'],
             'BILL' => [$bill, 'bill']];
+
     }
 
     public function getAdminRoles()
@@ -114,5 +126,10 @@ class AdminService implements AdminServiceInterface
     public function upperStringRole($string)
     {
         return str_replace("_", " ", strtoupper($string));
+    }
+
+    public function getShipments()
+    {
+        return DB::table('shipments')->get();
     }
 }
