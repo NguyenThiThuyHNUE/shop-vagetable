@@ -107,43 +107,15 @@
                     <div class="col-md-8 hidden-xs hidden-sm">
                         <div class="main-menu">
 
-                            <nav><!-- chuyên làm menu -->
+                            <nav> <!-- chuyên làm menu -->
                                 <ul>
-                                    <li><a href="index.html">home</a>
+                                    <li><a href="{{ url('/') }}">home</a>
                                         <ul>
-                                            <li><a href="index.html">home page</a></li>
+                                            <li><a href="{{ url('/') }}">home page</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="about.html">about</a></li>
-                                    <li><a href="blog.html">blog</a></li>
-                                    <li><a href="#">pages</a>
-                                        <ul>
-                                            <li><a href="about.html">about</a></li>
-                                            <li><a href="blog.html">blog</a></li>
-                                            <li><a href="checkout.html">checkout</a></li>
-                                            <li><a href="contact.html">contact</a></li>
-                                            <li><a href="login.html">login</a></li>
-                                            <li><a href="404.html">404 error</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="contact.html">contact</a></li>
-                                    <li><a href="login.html">login</a></li>
-                                    <li class="nav-item">
-                                        <select name="lang" id="" class="form-control" onchange="handleValueSelect(this)">
-                                            @if(Session::has('lang'))
-                                                @if(Session::get('lang') == 'en')
-                                                    <option value="{{ url('lang/en') }}">en</option>
-                                                    <option value="{{ url('lang/vi') }}">vi</option>
-                                                @else
-                                                    <option value="{{ url('lang/vi') }}">vi</option>
-                                                    <option value="{{ url('lang/en') }}">en</option>
-                                                @endif
-                                            @else
-                                                <option value="{{ config('app.locale') }}">{{ config('app.locale') }}</option>
-                                                <option value="{{ url('lang/vi') }}">vi</option>
-                                            @endif
-                                        </select>
-                                    </li>
+                                    <li><a href="{{ route('shopBill.getBill') }}">Mybill</a></li>
+                                    <li><a href="{{ route('home.info') }}">Infomation</a></li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{ route('carts.index') }}">
                                 <span>{{__('layout_home.cart')}} &nbsp;<span>@if(Session::has('cart'))
@@ -180,7 +152,24 @@
                                                 </form>
                                             </div>
                                         </li>
+
                                     @endif
+                                    <li class="nav-item">
+                                        <select name="lang" id="" class="form-control" onchange="handleValueSelect(this)">
+                                            @if(Session::has('lang'))
+                                                @if(Session::get('lang') == 'en')
+                                                    <option value="{{ url('lang/en') }}">en</option>
+                                                    <option value="{{ url('lang/vi') }}">vi</option>
+                                                @else
+                                                    <option value="{{ url('lang/vi') }}">vi</option>
+                                                    <option value="{{ url('lang/en') }}">en</option>
+                                                @endif
+                                            @else
+                                                <option value="{{ config('app.locale') }}">{{ config('app.locale') }}</option>
+                                                <option value="{{ url('lang/vi') }}">vi</option>
+                                            @endif
+                                        </select>
+                                    </li>
                                 </ul>
                             </nav>
                         </div>
@@ -272,7 +261,6 @@
                                 <span class="blog-author">By <a href="#"><strong>91%</strong> {{__('user_home.detailComment')}}</a></span>
                                 <span class="blog-cat">in <a href="#">87 {{__('user_home.votes')}})</a></span>
                             </div>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in .....</p>
                             <h3><a href="single-blog.html"> <form method="post" action="{{ route('changeCart', $product->id) }}">
                                                                  @csrf
                                                                 <button class="add-to-cart btn btn-default" type="submit">{{ __('user_home.addToCart') }}</button>
@@ -283,7 +271,7 @@
                     </div>
                     <div class="blog-wrapper">
                         <div class="blog-img embed-responsive embed-responsive-16by9">
-                            <iframe src="https://player.vimeo.com/video/32360800" ></iframe>
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/zjJBh4a5BeQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
                         <div class="blog-content">
                             <h3><a href="single-blog.html">Lorem ipsum dolor sit</a></h3>
@@ -292,7 +280,7 @@
                                 <span class="blog-author">By <a href="#">themebuz</a></span>
                                 <span class="blog-cat">in <a href="#">women's Style</a></span>
                             </div>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in .....</p>
+
                             <a class="read-more" href="#">Read more <i class="fa fa-angle-right"></i> <i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>
@@ -310,7 +298,7 @@
                 <div class="col-md-12">
                     <div class="footer-logo">
                         <img src="img/logo-white-text.png" alt="" />
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore <br /> magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation.</p>
+
                         <div class="widget-icon">
                             <a href="#"><i class="fa fa-facebook"></i></a>
                             <a href="#"><i class="fa fa-twitter"></i></a>

@@ -60,7 +60,7 @@ class HomeController extends Controller
 
     public function detail($id)
     {
-        var_dump(Auth::user()->name);
+//        var_dump(Auth::user()->name);
 
         $product = $this->productService->findById($id);
         return view('home.detail', compact('product'));

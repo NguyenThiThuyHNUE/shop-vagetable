@@ -41,6 +41,7 @@ class AdminController extends Controller
 
     public function index()
     {
+//        dd(Auth::user()->name);
         $adminRoles = $this->adminService->getAdminRoles();
         $data = $this->adminService->getAll();
         $this->adminService->getAdminRole();

@@ -450,6 +450,9 @@
                                         <option value="audi4">Colombia</option>
                                         <option value="audi5">Dominican Republic</option>
                                     </select>
+                                    @if($errors-> has('billCity'))
+                                        <span class="text-danger">{{$errors->first('billCity')}}</span>
+                                    @endif
                                 </div>
                                 <div class="country-select">
                                     <label>Distric <span class="required">*</span></label>
@@ -464,6 +467,9 @@
                                         <option value="audi4">Colombia</option>
                                         <option value="audi5">Dominican Republic</option>
                                     </select>
+                                    @if($errors-> has('billDistric'))
+                                        <span class="text-danger">{{$errors->first('billDistric')}}</span>
+                                    @endif
                                 </div>
                             </div>
 {{--                            <div class="col-md-6">--}}
@@ -488,6 +494,9 @@
                                 <div class="checkout-form-list">
                                     <label for="address">Address <span class="required">*</span></label>
                                     <input type="text" placeholder="Street address" name="billAddress" id="address"/>
+                                    @if($errors-> has('billAddress'))
+                                        <span class="text-danger">{{$errors->first('billAddress')}}</span>
+                                    @endif
                                 </div>
                             </div>
                             <h4>Payment</h4>

@@ -274,10 +274,10 @@
         <div class="slide1-text">
             <div class="middle-text">
                 <div class="cap-dec wow bounceIn" data-wow-duration="0.7s" data-wow-delay="0s">
-                    <h3>trendy summer collection 2016</h3>
+                    <h3>Vegetable trends 2019</h3>
                 </div>
                 <div class="cap-title wow bounceIn" data-wow-duration="1s" data-wow-delay="0.2s">
-                    <h1>Top fashion for women</h1>
+                    <h1> The most delicious vegetables in the world</h1>
                 </div>
                 <div class="cap-readmore wow bounceIn" data-wow-duration="1.1s" data-wow-delay=".5s">
                     <a href="{{ url('/') }}">shop now</a>
@@ -290,10 +290,11 @@
         <div class="slide1-text">
             <div class="middle-text">
                 <div class="cap-dec wow bounceInDown" data-wow-duration="0.9s" data-wow-delay="0s">
-                    <h3>trendy summer collection 2016</h3>
+                    <h3>Vegetable trends 2019</h3>
                 </div>
                 <div class="cap-title wow bounceInRight" data-wow-duration="1.2s" data-wow-delay="0.2s">
-                    <h1>Top fashion for men</h1>
+                    <h1>
+                        The most delicious vegetables in the world</h1>
                 </div>
                 <div class="cap-readmore wow bounceInUp" data-wow-duration="1.3s" data-wow-delay=".5s">
                     <a href="#">shop now</a>
@@ -505,7 +506,7 @@
                                 <span class="blog-author">By <a href="#">ThemeBuz</a></span>
                                 <span class="blog-cat">in <a href="#">men's Style</a></span>
                             </div>
-                            <p>Theo Đông y, rau ngót có tính mát, vị ngọt, tác dụng thanh nhiệt, giải độc, bổ huyết, nhuận tràng.... Thành phần dinh dưỡng của rau ngót chứa lượng đạm thực vật cao nên rau ngót được khuyên dùng thay thế đạm động vật.</p>
+                            <p>According to Eastern medicine, vegetables have cool properties, sweetness, cooling effect, detoxification, blood tonic, laxative .... Nutrition profile of vegetables has high amount of vegetable protein, so vegetables are recommended to replace. animal protein.</p>
                             <a class="read-more" href="#">Read more <i class="fa fa-angle-right"></i> <i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>
@@ -517,13 +518,14 @@
                             <a href="single-blog.html"><img src="https://zenco.com.vn/wp-content/uploads/2019/09/b%C3%A0-b%E1%BA%A7u-%C4%83n-rau-mu%E1%BB%91ng-1.jpg" alt="" /></a>
                         </div>
                         <div class="blog-content">
-                            <h3><a href="single-blog.html">Nguồn cung cấp vitamin A tuyệt vời cho cơ thể</a></h3>
+                            <h3><a href="single-blog.html">Great source of vitamin A for the body</a></h3>
                             <div class="blog-meta">
                                 <span class="blog-date">sep 21,2015</span>
                                 <span class="blog-author">By <a href="#">ThemeBuz</a></span>
                                 <span class="blog-cat">in <a href="#">men's Style</a></span>
                             </div>
-                            <p>Rau muống là loại thực phẩm quen thuộc với mọi gia đình Việt. Đặc biệt, món rau muống xào tỏi xanh giòn có mùi vị đặc biệt hấp dẫn. Không chỉ ngon, rau muống còn có nhiều lợi ích cho sức khỏe. </p>
+                            <p>
+                                Morning glory is a familiar food for all Vietnamese families. In particular, stir-fried morning glory with green garlic has a particularly attractive taste. Not only delicious, water spinach also has many health benefits. </p>
                             <a class="read-more" href="#">Read more <i class="fa fa-angle-right"></i> <i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>

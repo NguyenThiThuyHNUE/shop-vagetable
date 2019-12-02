@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CheckoutRequest;
 use App\Services\BillServiceInterface;
 use App\Services\MailServiceInterface;
 use App\Services\UserServiceInterface;
@@ -40,7 +41,7 @@ class ShopBillController extends Controller
         return view('home.bill.list', compact('bills'));
     }
 
-    public function storeBill(Request $request)
+    public function storeBill(CheckoutRequest $request)
     {
         $this->billService->create($request);
 //        $bill = $this->mailService->getBill();

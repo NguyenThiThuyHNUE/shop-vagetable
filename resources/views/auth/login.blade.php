@@ -302,7 +302,7 @@
                         @enderror
                         <label>Password</label>
                         <input id="password" type="password" name="password" required autocomplete="current-password"/>
-                        @error('password')--}}
+                        @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
