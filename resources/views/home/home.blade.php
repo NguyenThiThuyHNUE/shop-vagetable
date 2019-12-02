@@ -395,7 +395,7 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <h3><a href="single-product.html">{{ $product->productName }}</a></h3>
+                                                <h3><a href="xsingle-product.html">{{ $product->productName }}</a></h3>
                                                 <div class="price">
                                                     <span>{{ number_format($product->productPrice).' VND' }}</span>
                                                     <span class="old">$80.11</span>

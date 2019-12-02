@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ResigerProfileRequest;
 use App\Services\ProfileServiceInterface;
 use Illuminate\Http\Request;
 
@@ -22,7 +23,7 @@ class HomeProfileController extends Controller
         return view('home.user.registerProfile');
     }
 
-    public function storeProfile(Request $request)
+    public function storeProfile(ResigerProfileRequest $request)
     {
         $this->profileService->storeProfile($request);
 

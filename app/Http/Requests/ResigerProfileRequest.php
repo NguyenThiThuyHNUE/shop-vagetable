@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProductRequestForm extends FormRequest
+class ResigerProfileRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,25 +23,19 @@ class ProductRequestForm extends FormRequest
      */
     public function rules()
     {
-        if (request()->has('image')) {
-            return [
-                'productName' => 'required|min:2|max:8',
-                'productPrice' => 'required|numbers',
-                'image' => 'image',
-            ];
-        }
         return [
-            'productName' => 'required',
-            'productPrice' => 'required',
+            'profileName' => 'required|string:value|min:2|max:50',
+            'profilePhone' => 'required|integer|min:9',
+            'profileImage' => 'image'
         ];
     }
 
     public function messages()
     {
         return [
-            'productName.required'=> ' Ten khong duoc de trong',
-            'productName.min'=> ' Ten phai nhieu hon 2 ki tu',
-
+            'profileName.required' => 'profileName is required',
+            'profilePhone.required' => 'profilePhone is required',
+            'profileImage.image' => 'The file under validation must be an image (jpeg, png, bmp, or gif)',
         ];
     }
 }

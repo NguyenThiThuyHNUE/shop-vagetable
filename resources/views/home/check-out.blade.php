@@ -472,24 +472,6 @@
                                     @endif
                                 </div>
                             </div>
-{{--                            <div class="col-md-6">--}}
-{{--                                <div class="checkout-form-list">--}}
-{{--                                    <label>First Name <span class="required">*</span></label>--}}
-{{--                                    <input type="text" placeholder="" />--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="col-md-6">--}}
-{{--                                <div class="checkout-form-list">--}}
-{{--                                    <label>Last Name <span class="required">*</span></label>--}}
-{{--                                    <input type="text" placeholder="" />--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="col-md-12">--}}
-{{--                                <div class="checkout-form-list">--}}
-{{--                                    <label>Company Name</label>--}}
-{{--                                    <input type="text" placeholder="" />--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
                             <div class="col-md-12">
                                 <div class="checkout-form-list">
                                     <label for="address">Address <span class="required">*</span></label>
