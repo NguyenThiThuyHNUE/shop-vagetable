@@ -102,4 +102,9 @@ class BillService implements BillServiceInterface
     {
         return $this->billRepository->findByUserId($id);
     }
+
+    public function edit($id)
+    {
+        // TODO: Implement edit() method.
+    }
 }

@@ -17,7 +17,7 @@
                                     Name
                                 </label>
                                 <div class="col-md-6">
-                                    <input type="text" name="name" class="form-control">
+                                    <input type="text" name="name" class="form-control" value="{{$user->name}}">
                                     @if($errors->has('name'))
                                         <span class="text-md-left text-danger">{{ $errors->first('name') }}</span>
                                     @endif
@@ -28,7 +28,7 @@
                                     Email
                                 </label>
                                 <div class="col-md-6">
-                                    <input type="text" name="email" class="form-control">
+                                    <input type="text" name="email" class="form-control" value="{{$user->email}}">
                                     @if($errors->has('email'))
                                         <span class="text-md-left text-danger">{{ $errors->first('email') }}</span>
                                     @endif
@@ -39,7 +39,7 @@
                                     Password
                                 </label>
                                 <div class="col-md-6">
-                                    <input type="password" name="password" class="form-control">
+                                    <input type="password" name="password" class="form-control" value="{{$user->password}}">
                                     @if($errors->has('password'))
                                         <span class="text-md-left text-danger">{{ $errors->first('password') }}</span>
                                     @endif

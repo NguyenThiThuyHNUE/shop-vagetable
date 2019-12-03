@@ -123,13 +123,13 @@
                         <div class="main-menu">
                             <nav> <!-- chuyên làm menu -->
                                 <ul>
-                                    <li><a href="{{ url('/') }}">home</a>
+                                    <li><a href="{{ url('/') }}">{{__('home.home')}}</a>
                                         <ul>
                                             <li><a href="{{ url('/') }}">home page</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="{{ route('shopBill.getBill') }}">Mybill</a></li>
-                                    <li><a href="{{ route('home.info') }}">Infomation</a></li>
+                                    <li><a href="{{ route('shopBill.getBill') }}">{{__('home.Mybill')}}</a></li>
+                                    <li><a href="{{ route('home.info') }}">{{__('home.Infomation')}}</a></li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{ route('carts.index') }}">
                                 <span>{{__('layout_home.cart')}} &nbsp;<span>@if(Session::has('cart'))
@@ -141,10 +141,10 @@
                                     </li>
                                     @if(! Auth::guard('web')->check())
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                            <a class="nav-link" href="{{ route('login') }}">{{ __('home.Login') }}</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                            <a class="nav-link" href="{{ route('register') }}">{{ __('home.Register') }}</a>
                                         </li>
                                     @else
                                         <li class="nav-item dropdown">
@@ -276,13 +276,13 @@
         <div class="slide1-text">
             <div class="middle-text">
                 <div class="cap-dec wow bounceIn" data-wow-duration="0.7s" data-wow-delay="0s">
-                    <h3>Vegetable trends 2019</h3>
+                    <h3> {{ __('home.vegatableTrends') }}</h3>
                 </div>
                 <div class="cap-title wow bounceIn" data-wow-duration="1s" data-wow-delay="0.2s">
-                    <h1> The most delicious vegetables in the world</h1>
-                </div>
+                    <h1> {{ __('home.vegatablest') }}</h1>
+            </div>
                 <div class="cap-readmore wow bounceIn" data-wow-duration="1.1s" data-wow-delay=".5s">
-                    <a href="{{ url('/') }}">shop now</a>
+                    <a href="{{ url('/') }}">{{ __('home.shopnow') }}</a>
                 </div>
             </div>
         </div>

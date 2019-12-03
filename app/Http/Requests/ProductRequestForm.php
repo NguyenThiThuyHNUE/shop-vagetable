@@ -26,7 +26,7 @@ class ProductRequestForm extends FormRequest
         if (request()->has('image')) {
             return [
                 'productName' => 'required|min:2|max:8',
-                'productPrice' => 'required|numbers',
+                'productPrice' => 'required|integer',
                 'image' => 'image',
             ];
         }

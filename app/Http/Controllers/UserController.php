@@ -73,7 +73,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.user.update', compact('id'));
+
+        $user = $this->userService->edit($id);
+        return view('admin.user.update', compact('id','user'));
     }
 
     /**
@@ -100,4 +102,5 @@ class UserController extends Controller
         $this->userService->delete($id);
         return redirect()->route('users.index');
     }
+
 }

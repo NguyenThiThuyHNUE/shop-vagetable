@@ -47,4 +47,8 @@ class SendMailController extends Controller
     {
         Session::flush();
     }
+
+    public function thankyou(){
+        return view('home.mail.thankyou');
+    }
 }

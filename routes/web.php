@@ -65,6 +65,7 @@ Route::prefix('bill')->group(function () {
 Route::prefix('mail')->group(function () {
     Route::get('/', 'SendMailController@form')->name('mail.form');
     Route::post('/send', 'SendMailController@sendMail')->name('mail.send');
+    Route::post('/thankyou', 'SendMailController@thankyou')->name('mail.thankyou');
 });
 
 

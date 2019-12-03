@@ -36,4 +36,9 @@ class UserRepository implements UserRepositoryInterface
         $user = $this->findById($id);
         return $user->delete();
     }
+
+    public function edit($id){
+        $user = $this->findById($id);
+        return $user;
+    }
 }

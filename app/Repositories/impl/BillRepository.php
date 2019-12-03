@@ -47,4 +47,9 @@ class BillRepository implements BillRepositoryInterface
         $bill = Bill::where('user_id',$id)->orderBy('payDate','desc')->get();
         return $bill;
     }
+
+    public function edit($id)
+    {
+        // TODO: Implement edit() method.
+    }
 }

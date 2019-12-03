@@ -1,21 +1,4 @@
-{{--@extends("layouts.home")--}}
-{{--@section('home')--}}
-{{--    <div class="row justify-content-center">--}}
-{{--        <div class="form-group">--}}
-{{--            <p> We will send bill for you. Please enter your mail--}}
-{{--            </p><br>--}}
-{{--            <form method="post" action="{{ route('mail.send') }}" >--}}
-{{--                @csrf--}}
-{{--                <label for="To">To:--}}
-{{--                    <input type="text" name="user">--}}
-{{--                </label>--}}
-{{--                <br><br>--}}
-{{--                <button type="submit">Send</button>--}}
-{{--            </form>--}}
-{{--        </div>--}}
 
-{{--    </div>--}}
-{{--@endsection--}}
 
     <!doctype html>
 <html class="no-js" lang="">
@@ -212,14 +195,14 @@
             <div class="col-md-8">
                 <div class="contact-form">
                     <div class="message-title">
-                        <h1>We will send bill for you. Please enter your mail</h1>
+                        <h1>Thank you for your purchase at our site. Wish you a good day.</h1>
                     </div>
                     <div class="row">
-                        <form action="{{route('mail.thankyou')}}" method="POST">
+                        <form action="mail.php" method="get">
                             @csrf
                             <div class="input-filed">
-                                <div class="col-md-12">
-                                    <input name="subject" type="text" placeholder="Your Mail"/>
+                                <div class="contact-textarea">
+                                    <textarea name="subject" type="text" placeholder="Your opinion"></textarea>
                                 </div>
                             </div>
                             <div class="col-md-12">
@@ -468,4 +451,5 @@
 <script src="{{\Illuminate\Support\Facades\URL::asset('js/main.js')}}"></script>
 </body>
 </html>
+
 
