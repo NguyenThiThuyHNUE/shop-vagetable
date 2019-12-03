@@ -11,7 +11,16 @@
                     <div class="card-body">
                         <form action="{{ route('users.store') }}" method="post">
                             @csrf
-
+                            <div class="form-group row">
+                                <label for="" class="col-md-2 col-form-label text-md-right">
+                                    ID
+                                </label>
+                                <div class="col-md-2">
+                                    <input type="text" name="id" class="form-control" required value="{{ old('id') }}">
+                                    @if($errors->has('id'))
+                                        <span class="text-md-left text-danger">{{ $errors->first('id') }}</span>
+                                    @endif
+                                </div>
                             <div class="form-group row">
                                 <label for="" class="col-md-4 col-form-label text-md-right">
                                     Name

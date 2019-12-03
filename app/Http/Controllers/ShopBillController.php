@@ -65,3 +65,4 @@ class ShopBillController extends Controller
         return view('home.bill.detail', compact('bill', 'billProducts'));
     }
 }
+

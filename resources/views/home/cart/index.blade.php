@@ -428,10 +428,8 @@
                     </div>
             </form>
                 </div>
-            </form>
         </div>
     </div>
-</div>
 <!-- checkout-area end -->
 <!-- brand-area start -->
 <div class="brand-area">

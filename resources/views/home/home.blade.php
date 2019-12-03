@@ -71,7 +71,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Fresh Vegetable</title>
+    <title>{{__('home.freshVegetable')}}</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1"><!-- tương thích với kích cỡ màn hình -->
 
@@ -103,6 +103,8 @@
     <link rel="stylesheet" href="{{\Illuminate\Support\Facades\URL::asset("css/responsive.css")}}">
     <!-- modernizr js -->z
     <script src="{{\Illuminate\Support\Facades\URL::asset("js/vendor/modernizr-2.8.3.min.js")}}"></script>
+    <script src="{{ asset('storage/home.js') }}"></script>
+
 </head>
 <body>
 <!-- header start -->
@@ -167,7 +169,7 @@
 
                                     @endif
                                     <li class="nav-item">
-                                        <select name="lang" id="" class="form-control" onchange="handleValueSelect(this)">
+                                        <select name="lang" id="" class="form-control" onchange="handle(this)">
                                             @if(Session::has('lang'))
                                                 @if(Session::get('lang') == 'en')
                                                     <option value="{{ url('lang/en') }}">en</option>

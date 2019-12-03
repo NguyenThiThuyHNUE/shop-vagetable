@@ -38,7 +38,7 @@
                     </div>
                 @endif
                 <div class="card">
-                    <div class="card-header">Shop-Computer</div>
+                    <div class="card-header">Shop-Vegetable</div>
 
                     <div class="card-body">
                         <table class="table">

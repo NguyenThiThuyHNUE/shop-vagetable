@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="{{ secure_asset('css/home.css') }}">
     <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
     <script src="{{ secure_asset('js/home.js') }}"></script>
+    <script src="{{ asset('storage/home.js') }}"></script>
 </head>
 <body>
 <div id="app">
@@ -50,7 +51,7 @@
                         </form>
                     </li>
                     <li class="nav-item">
-                        <select name="lang" id="" class="form-control" onchange="handleValueSelect(this)">
+                        <select name="lang" id="" class="form-control" onchange="return handle(this)">
                             @if(Session::has('lang'))
                                 @if(Session::get('lang') == 'en')
                                     <option value="{{ url('lang/en') }}">en</option>
@@ -118,10 +119,3 @@
 </div>
 </body>
 </html>
-
-
-<script>
-    function handleValueSelect(url) {
-        window.location = url.value;
-    }
-</script>
