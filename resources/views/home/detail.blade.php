@@ -255,6 +255,7 @@
                         </div>
                         <div class="blog-content">
                             <h3><a href="single-blog.html">{{ $product->productName }}</a></h3>
+                            <h3><a href="single-blog.html"><b>Nhà cung cấp: </b>{{ $product->provider }}</a></h3>
                             <h3><a href="single-blog.html">{{ number_format($product->productPrice).'   VND'}}</a></h3>
                             <div class="blog-meta">
                                 <span class="blog-date">41 {{ __('user_home.reviews') }}</span>

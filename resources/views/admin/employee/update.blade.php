@@ -25,12 +25,12 @@
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-md-4 col-form-label text-md-right">
-                                    Email
+                                    Phone
                                 </label>
                                 <div class="col-md-6">
-                                    <input type="text" name="employeeEmail" class="form-control">
+                                    <input type="text" name="employeePhone" class="form-control">
                                     @if($errors->has('employeeEmail'))
-                                        <span class="text-md-left text-danger">{{ $errors->first('employeeEmail') }}</span>
+                                        <span class="text-md-left text-danger">{{ $errors->first('employeePhone') }}</span>
                                     @endif
                                 </div>
                             </div>

@@ -510,7 +510,7 @@
                             <div class="col-md-6">
                                 <div class="checkout-form-list">
                                     <label>Expiration <span class="required">*</span></label>
-                                    <input type="email" placeholder="" />
+                                    <input type="date" placeholder="" />
                                 </div>
                             </div>
                             <div class="col-md-6">

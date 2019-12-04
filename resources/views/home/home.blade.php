@@ -397,7 +397,7 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <h3><a href="xsingle-product.html">{{ $product->productName }}</a></h3>
+                                                <h3><a href="{{ route('home.detail',$product->id) }}">{{ $product->productName }}</a></h3>
                                                 <div class="price">
                                                     <span>{{ number_format($product->productPrice).' VND' }}</span>
                                                     <span class="old">$80.11</span>
@@ -432,7 +432,7 @@
                                                             <div class="button-cart">
                                                                 <form method="post" action="{{ route('changeCart', $product->id) }}">
                                                                     @csrf
-                                                                    <button type="submit"><i class="fa fa-shopping-cart" href=""></i> add to cart</button></button>
+                                                                    <button type="submit"><i class="fa fa-shopping-cart" href=""></i> add to cart</button>
                                                                 </form>
                                                             </div>
                                                         </div>

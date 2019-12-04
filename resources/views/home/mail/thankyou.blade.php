@@ -198,7 +198,7 @@
                         <h1>Thank you for your purchase at our site. Wish you a good day.</h1>
                     </div>
                     <div class="row">
-                        <form action="mail.php" method="get">
+                        <form action="{{ url('/') }}" method="get">
                             @csrf
                             <div class="input-filed">
                                 <div class="contact-textarea">

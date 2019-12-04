@@ -12,6 +12,7 @@
                 <th scope="col">Name</th>
                 <th scope="col">Price</th>
                 <th scope="col">Image</th>
+                <th scope="col">Provider</th>
                 <th></th>
             </tr>
             </thead>
@@ -24,6 +25,7 @@
                     <td>{{ number_format($product->productPrice) }}</td>
                     <td><img src="{{ asset("storage/$product->image") }}" class="img-thumbnail" alt=""
                              style="width: 100px"></td>
+                    <td>{{ 'PD-'.$product->provider }}</td>
                     <td>
                         <div class="d-flex">
                             <div class="pr-2">

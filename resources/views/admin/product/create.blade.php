@@ -35,6 +35,18 @@
                                 @endif
                             </div>
 
+                            <div class="form-group row">
+                                <label for="" class="col-md-4 col-form-label text-md-right">
+                                    Provider
+                                </label>
+                                <div class="col-md-6">
+                                    <input type="text" name="provider" class="form-control">
+                                </div>
+{{--                                @if($errors-> has('provider'))--}}
+{{--                                    <span class="text-danger">{{$errors->first('productPrice')}}</span>--}}
+{{--                                @endif--}}
+                            </div>
+
                             <div class="form-group">
                                 <label for="image" class="col-md-4 col-form-label text-md-right">Product Image</label>
 

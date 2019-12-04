@@ -29,10 +29,24 @@
                                 </label>
                                 <div class="col-md-6">
                                     <input type="text" name="productPrice" class="form-control" value="{{$product->productPrice}}">
+                                    @if($errors-> has('productPrice'))
+                                        <span class="text-danger">{{$errors->first('productPrice')}}</span>
+                                    @endif
                                 </div>
-                                @if($errors-> has('productPrice'))
-                                    <span class="text-danger">{{$errors->first('productPrice')}}</span>
-                                @endif
+
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="" class="col-md-4 col-form-label text-md-right">
+                                    Provider
+                                </label>
+                                <div class="col-md-6">
+                                    <input type="text" name="provider" class="form-control" value="{{$product->provider}}">
+{{--                                    @if($errors-> has('productPrice'))--}}
+{{--                                        <span class="text-danger">{{$errors->first('productPrice')}}</span>--}}
+{{--                                    @endif--}}
+                                </div>
+
                             </div>
 
                             <div class="form-group">
