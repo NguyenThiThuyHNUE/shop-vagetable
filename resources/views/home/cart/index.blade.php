@@ -422,7 +422,13 @@
 {{--                                </div>--}}
 {{--                            </div>--}}
                             <div class="order-button-payment">
-                               <a href="{{route('home.check-out')}}"><input value="check out"></a>
+                               <a href="{{route('home.check-out')}}"><input id="checkout" value="check out"></a>
+                                <style>
+                                    #checkout{
+                                        width: 9%;
+                                        margin-left:40%;
+                                    }
+                                </style>
                             </div>
                         </div>
                     </div>

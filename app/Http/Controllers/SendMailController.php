@@ -43,6 +43,17 @@ class SendMailController extends Controller
         return redirect()->back();
     }
 
+    public function formdemo(){
+        return view('home.mail.formdemo');
+    }
+
+    public function sendMaildemo(Request $get){
+        $email= $get->email;
+        $subject= $get->subject;
+        $message= $get->message;
+        Mail::to($email)->send(new SendMail($subject, $message));
+    }
+
     public function clearSession(): void
     {
         Session::flush();

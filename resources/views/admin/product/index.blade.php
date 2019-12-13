@@ -13,6 +13,7 @@
                 <th scope="col">Price</th>
                 <th scope="col">Image</th>
                 <th scope="col">Provider</th>
+                <th scope="col">Count</th>
                 <th></th>
             </tr>
             </thead>
@@ -26,6 +27,7 @@
                     <td><img src="{{ asset("storage/$product->image") }}" class="img-thumbnail" alt=""
                              style="width: 100px"></td>
                     <td>{{ 'PD-'.$product->provider }}</td>
+                    <td>{{ 'PD-'.$product->count }}</td>
                     <td>
                         <div class="d-flex">
                             <div class="pr-2">

@@ -242,7 +242,7 @@
                                 <th scope="col">Name Product</th>
                                 <th scope="col">Total Price</th>
                                 <th scope="col">Status</th>
-                            </tr>
+
                             </thead>
                             @foreach($bills as $bill)
                                 <tr class="cart_item">
@@ -274,12 +274,12 @@
                     </div>
                 </div>
             </div>
-            </form>
+
         </div>
-        </form>
+
     </div>
 </div>
-</div>
+
 <!-- checkout-area end -->
 <!-- brand-area start -->
 <div class="brand-area">

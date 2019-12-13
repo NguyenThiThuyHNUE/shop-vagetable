@@ -251,11 +251,12 @@
                 <div class="blog-page-main">
                     <div class="blog-wrapper">
                         <div class="blog-img">
-                            <a href="single-blog.html"><img src="http://imgs.vietnamnet.vn/Images/2016/04/29/09/20160429091123-rau-sach.jpg" alt="" /></a>
+                            <a href="single-blog.html"> <img  src="{{ asset("storage/$product->image") }}" alt="" /></a>
                         </div>
                         <div class="blog-content">
                             <h3><a href="single-blog.html">{{ $product->productName }}</a></h3>
                             <h3><a href="single-blog.html"><b>Nhà cung cấp: </b>{{ $product->provider }}</a></h3>
+                            <h3><a href="single-blog.html"><b>Số lượng: </b>{{ $product->count }}</a></h3>
                             <h3><a href="single-blog.html">{{ number_format($product->productPrice).'   VND'}}</a></h3>
                             <div class="blog-meta">
                                 <span class="blog-date">41 {{ __('user_home.reviews') }}</span>

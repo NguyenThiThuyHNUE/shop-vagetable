@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('MAIL_HOST', 'smtp.gmail.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => 'dovanhanh12b@gmail.com',
-        'name' => 'DO HANH',
+        'address' => env('MAIL_FORM_ADDRESS', 'nguyenthithuyqptb@gmail.com'),
+        'name' => env('MAIL_FORM_NAME','Fresh Vegetable'),
     ],
 
     /*
@@ -84,9 +84,9 @@ return [
     |
     */
 
-    'username' => env('dovanhanh12b@gmail.com'),
+    'username' => env('MAIL_USERNAME','nguyenthithuyqptb@gmail.com'),
 
-    'password' => env('dovanhanh@1208'),
+    'password' => env('MAIL_PASSWORD','122333444455555'),
 
     /*
     |--------------------------------------------------------------------------

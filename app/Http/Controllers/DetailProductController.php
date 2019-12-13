@@ -13,4 +13,10 @@ class DetailProductController extends Controller
     {
         $this->productService = $productService;
     }
+
+    public function show($id){
+        $productDetail = $this->productService->findById($id);
+//        dd($productDetail);
+        return view('home.home', compact('productDetail'));
+    }
 }

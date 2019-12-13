@@ -1,10 +1,10 @@
 <?php
 
 
-namespace App\Repositories;
+namespace App\Services;
 
 
-interface UserRepositoryInterface extends CRUDRepository
+interface MailUserServiceInterface
 {
     public function getAll();
 

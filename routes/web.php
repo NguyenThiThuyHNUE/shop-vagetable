@@ -35,6 +35,8 @@ Route::resource('users', 'UserController');
 Route::resource('employees', 'EmployeeController');
 Route::resource('bills', 'BillController');
 Route::resource('products', 'ProductController');
+Route::resource('mailusers', 'MailUserController');
+Route::get('detail/products/{id}', 'DetailProductController@show')->name('detail.product');
 Route::get('shiments', 'ShipController@index')->name('shipments.index');
 
 
@@ -64,7 +66,9 @@ Route::prefix('bill')->group(function () {
 
 Route::prefix('mail')->group(function () {
     Route::get('/', 'SendMailController@form')->name('mail.form');
+    Route::get('/demo', 'SendMailController@formdemo')->name('mail.formdemo');
     Route::post('/send', 'SendMailController@sendMail')->name('mail.send');
+    Route::post('/send/demo', 'SendMailController@sendMaildemo')->name('mail.senddemo');
     Route::post('/thankyou', 'SendMailController@thankyou')->name('mail.thankyou');
 });
 
@@ -80,3 +84,5 @@ Route::get('/drive/upload', 'DriveController@uploadFile'); // File upload form
 Route::post('/drive/upload', 'DriveController@uploadFile'); // Upload file to Drive from Form
 Route::get('/drive/create', 'DriveController@create'); // Upload file to Drive from Storage
 Route::get('/drive/delete/{id}', 'DriveController@deleteFile'); // Delete file or folder
+
+

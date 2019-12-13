@@ -30,6 +30,7 @@ class ProductRepository implements ProductRepositoryInterface
         $product->productName = $request->productName;
         $product->productPrice = $request->productPrice;
         $product->provider = $request->provider;
+        $product->count = $request->count;
     }
 
     public function findById($id)
@@ -42,6 +43,7 @@ class ProductRepository implements ProductRepositoryInterface
         $product->productName = $request->productName;
         $product->productPrice = $request->productPrice;
         $product->provider = $request->provider;
+        $product->count = $request->count;
     }
 
     public function delete($id)

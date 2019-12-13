@@ -8,6 +8,7 @@ use App\RoleV2;
 use App\Services\AdminServiceInterface;
 use App\Repositories\AdminRepositoryInterface;
 use App\Services\BillServiceInterface;
+use App\Services\MailUserServiceInterface;
 use App\Services\ProductServiceInterface;
 use App\Services\UserServiceInterface;
 use Illuminate\Support\Facades\Auth;
@@ -21,6 +22,7 @@ class AdminService implements AdminServiceInterface
      * @var UserServiceInterface
      */
     private $userService;
+    private $mailUserService;
     /**
      * @var ProductServiceInterface
      */
@@ -38,17 +40,20 @@ class AdminService implements AdminServiceInterface
      */
     private $employeeRepository;
 
+
     public function __construct(UserServiceInterface $userService,
                                 ProductServiceInterface $productService,
                                 AdminRepositoryInterface $adminRepository,
                                 EmployeeRepository $employeeRepository,
-                                BillServiceInterface $billService)
+                                BillServiceInterface $billService,
+                                MailUserServiceInterface $mailUserService)
     {
         $this->userService = $userService;
         $this->productService = $productService;
         $this->billService = $billService;
         $this->adminRepository = $adminRepository;
         $this->employeeRepository = $employeeRepository;
+        $this->mailUserService = $mailUserService;
     }
 
     public function getAll()
@@ -58,11 +63,14 @@ class AdminService implements AdminServiceInterface
         $bill = $this->billService->getAll();
         $employee = $this->employeeRepository->getAll();
         $shipments = $this->getShipments();
+        $mailUser = $this->mailUserService->getAll();
         return ['USER' => [$user, 'user'],
             'PRODUCT' => [$product, 'product'],
             'EMPLOYEE' => [$employee, 'employee'],
             'SHIPMENTS' => [$shipments, 'shipment'],
-            'BILL' => [$bill, 'bill']];
+            'BILL' => [$bill, 'bill'],
+            'MAILUSER' => [$mailUser, 'mailuser']
+        ];
 
     }
 

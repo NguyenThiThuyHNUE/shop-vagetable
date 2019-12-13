@@ -12,9 +12,11 @@ use App\Repositories\impl\AdminService;
 use App\Repositories\impl\BillRepository;
 use App\Repositories\impl\CartRepository;
 use App\Repositories\impl\CustomerRepository;
+use App\Repositories\impl\MailUserRepository;
 use App\Repositories\impl\ProductRepository;
 use App\Repositories\impl\ProfileRepository;
 use App\Repositories\impl\UserRepository;
+use App\Repositories\MailUserRepositoryInterface;
 use App\Repositories\ProductRepositoryInterface;
 use App\Repositories\ProfileRepositoryInterface;
 use App\Repositories\UserRepositoryInterface;
@@ -27,11 +29,13 @@ use App\Services\impl\CartService;
 use App\Services\impl\CustomerService;
 use App\Services\impl\LangService;
 use App\Services\impl\MailService;
+use App\Services\impl\MailUserService;
 use App\Services\impl\ProductService;
 use App\Services\impl\ProfileService;
 use App\Services\impl\UserService;
 use App\Services\LangServiceInterface;
 use App\Services\MailServiceInterface;
+use App\Services\MailUserServiceInterface;
 use App\Services\ProductServiceInterface;
 use App\Services\ProfileServiceInterface;
 use App\Services\UserServiceInterface;
@@ -87,6 +91,13 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->singleton(MailServiceInterface::class,
             MailService::class);
+
+        $this->app->singleton(MailUserRepositoryInterface::class,
+            MailUserRepository::class);
+
+        $this->app->singleton(MailUserServiceInterface::class,
+            MailUserService::class);
+
 
     }
 

@@ -384,14 +384,24 @@
                                                 </a>
                                                 <span class="tag-line">new</span>
                                                 <div class="product-action">
-                                                    <div class="button-top">
-                                                        <a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>
-                                                        <a href="#" ><i class="fa fa-heart"></i></a>
+                                                    <div  class="button-top" data-toggle="modal" data-target="#exampleModal1" onclick="change()">
+                                                        <a  >{{ $product->count }}</a>
+                                                        <a href="#" ><i id ="add" class="fa fa-heart "></i></a>
+                                                        <style>
+                                                            .add1{
+                                                                color: tomato;
+                                                            }
+                                                        </style>
+                                                        <script>
+                                                            function change(){
+                                                                document.getElementById("add").classList.toggle("add1");
+                                                            }
+                                                        </script>
                                                     </div>
                                                     <div class="button-cart">
                                                         <form method="post" action="{{ route('changeCart', $product->id) }}">
                                                             @csrf
-                                                            <button type="submit"><i class="fa fa-shopping-cart" href=""></i> add to cart</button></button>
+                                                            <button type="submit"><i class="fa fa-shopping-cart" href=""></i> add to cart</button>
                                                         </form>
                                                     </div>
                                                 </div>
@@ -425,9 +435,18 @@
                                                         </a>
                                                         <span class="tag-line">new</span>
                                                         <div class="product-action">
-                                                            <div class="button-top">
-                                                                <a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>
+                                                            <div class="button-top" >
+{{--                                                                <a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>--}}
                                                                 <a href="#" ><i class="fa fa-heart"></i></a>
+{{--                                                                button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">--}}
+{{--                                                                Launch demo modal--}}
+{{--                                                                </button>--}}
+
+                                                                <!-- Modal -->
+
+
+
+
                                                             </div>
                                                             <div class="button-cart">
                                                                 <form method="post" action="{{ route('changeCart', $product->id) }}">
@@ -452,7 +471,25 @@
                                 </div>
                             </div>
 
+                            <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Voted!</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Bạn đã vote thành công
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 {{--                                    <!-- single-product end -->--}}
 
                                 </div>
@@ -680,23 +717,24 @@
                     <div class="modal-product">
                         <div class="product-images">
                             <div class="main-image images">
-                                <img alt="" src="img/product/13.jpg">
+{{--                                @dd($productDetail)--}}
+{{--                                <img  src="{{ asset("storage/$productDetail->image") }}" alt="" />--}}
                             </div>
                         </div><!-- .product-images -->
 
                         <div class="product-info">
                             <h1>Diam quis cursus</h1>
                             <div class="price-box">
-                                <p class="price"><span class="special-price"><span class="amount">$132.00</span></span></p>
+{{--                                <p class="price"><span class="special-price"><span class="amount">{{ number_format($productDetail->productPrice).'   VND'}}</span></span></p>--}}
                             </div>
                             <a href="shop.html" class="see-all">See all features</a>
                             <div class="quick-add-to-cart">
-                                <form method="post" class="cart">
+{{--                                <form method="post" action="{{ route('changeCart', $productDetail->id) }}" class="cart">--}}
                                     <div class="numbers-row">
                                         <input type="number" id="french-hens" value="3">
                                     </div>
                                     <button class="single_add_to_cart_button" type="submit">Add to cart</button>
-                                </form>
+{{--                                </form>--}}
                             </div>
                             <div class="quick-desc">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.

@@ -1,21 +1,40 @@
-{{--@extends("layouts.home")--}}
-{{--@section('home')--}}
-{{--    <div class="row justify-content-center">--}}
-{{--        <div class="form-group">--}}
-{{--            <p> We will send bill for you. Please enter your mail--}}
-{{--            </p><br>--}}
-{{--            <form method="post" action="{{ route('mail.send') }}" >--}}
-{{--                @csrf--}}
-{{--                <label for="To">To:--}}
-{{--                    <input type="text" name="user">--}}
-{{--                </label>--}}
-{{--                <br><br>--}}
-{{--                <button type="submit">Send</button>--}}
-{{--            </form>--}}
-{{--        </div>--}}
+{{--<!doctype html>--}}
+{{--<html lang="en">--}}
+{{--<head>--}}
+{{--    <meta charset="UTF-8">--}}
+{{--    <meta name="viewport"--}}
+{{--          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">--}}
+{{--    <meta http-equiv="X-UA-Compatible" content="ie=edge">--}}
+{{--    <title>Document</title>--}}
+{{--</head>--}}
+{{--<body>--}}
+{{--    <table>--}}
+{{--        <form method="post" action="{{route('mail.senddemo')}}">--}}
+{{--            @csrf--}}
+{{--            <tr>--}}
+{{--                <td> Subject </td>--}}
+{{--                <td><input type="text" name="subject"></td>--}}
+{{--            </tr>--}}
+{{--            <tr>--}}
+{{--                <td> Email </td>--}}
+{{--                <td><input type="email" name="email"></td>--}}
+{{--            </tr>--}}
+{{--            <tr>--}}
+{{--                <td> Message </td>--}}
+{{--                <td><textarea  name="message"></textarea></td>--}}
+{{--            </tr>--}}
+{{--            <tr>--}}
+{{--                <td> </td>--}}
+{{--                <td><button>Submit</button></td>--}}
+{{--            </tr>--}}
+{{--        </form>--}}
 
-{{--    </div>--}}
-{{--@endsection--}}
+{{--    </table>--}}
+{{--</body>--}}
+{{--</html>--}}
+
+
+
 
     <!doctype html>
 <html class="no-js" lang="">
@@ -212,24 +231,29 @@
             <div class="col-md-8">
                 <div class="contact-form">
                     <div class="message-title">
-                        <h1>We will send bill for you. Please enter your mail</h1>
+                        <h1>Send mail to customer</h1>
                     </div>
                     <div class="row">
-                        <form action="{{ route('mailusers.store') }}" method="post">
+                        <form method="post" action="{{route('mail.senddemo')}}">
                             @csrf
                             <div class="input-filed">
                                 <div class="col-md-12">
-                                    <input name="email" type="email" placeholder="Your Mail"/>
+                                    <input name="subject" type="text" placeholder="Subject"/>
                                 </div>
                             </div>
                             <div class="input-filed">
                                 <div class="col-md-12">
-                                    <textarea name="feeback" type="text" placeholder="Your Feeback" style="width:100px"></textarea>
+                                    <input name="email" type="mail" placeholder="Mail user" style="width:100%">
+                                </div>
+                            </div>
+                            <div class="input-filed">
+                                <div class="col-md-12">
+                                    <textarea name="message" type="text"  placeholder="Message" style="width:100%"></textarea>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="contact-textarea">
-                                    <input type="submit" value="submit" onclick="return conifirm('Thank you for your email and feedback. We will send the invoice as soon as possible!!!')" href="{{ route('mailusers.store') }}"/>
+                                    <input type="submit" value="submit"/>
                                 </div>
                             </div>
                         </form>
@@ -478,4 +502,5 @@
 <script src="{{\Illuminate\Support\Facades\URL::asset('js/main.js')}}"></script>
 </body>
 </html>
+
 
